@@ -1,0 +1,30 @@
+html {
+    background-color: #f0f0f0;
+}
+
+.event-card {
+    background-color: lightblue;
+    border: 1px solid #ccc;
+    border-radius: 16px;
+}
+
+h2 {
+    color: blue;
+    text-align: center;
+    font-size: 1.75em;
+}
+.time {
+    font-weight: bold;
+    text-align: center;
+}
+.content {
+    color: yellow;
+    line-height: 1.75;
+}
+
+.status {
+    color: white;
+    background-color: blue;
+    text-align: center;
+    border-radius: 8px;
+}

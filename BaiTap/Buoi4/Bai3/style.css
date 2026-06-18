@@ -1,0 +1,32 @@
+html {
+    background-color: rgb(253, 253, 202);
+}
+
+.discount-box {
+    background-color: rgb(255, 255, 255);
+    border: 1px solid orange;
+}
+
+h2 {
+    color: rgb(222, 144, 0);
+    text-align: center;
+    font-size: 1.75em;
+}
+
+.main-text {
+    color: #777;
+    text-align: center;
+}
+
+.discount-info {
+    background-color: greenyellow;
+    border: 1px dashed #000;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.warning {
+    color: red;
+    text-align: center;
+    text-transform: capitalize;
+}
