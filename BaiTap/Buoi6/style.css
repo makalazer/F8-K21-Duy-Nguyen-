@@ -1,0 +1,243 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 10px;
+}
+:root {
+  --process-bar-width: 90%;
+}
+
+.container {
+  width: 75%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.slogan {
+  font-size: 1.6rem;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  color: #5e6282;
+}
+
+.left-panel__title {
+  font-family: 'Volkhov', serif;
+  font-weight: 700;
+  font-size: 5rem;
+  color: #333;
+  margin-top: 1.5rem;
+  margin-bottom: 3rem;
+  max-width: 70%;
+  text-transform: capitalize;
+}
+
+.left-panel_item {
+  display: flex;
+  gap: 2rem;
+  font-family: 'Poppins', sans-serif;
+  padding: 2px 0;
+  width: 60%;
+  margin-bottom: 4.8rem;
+}
+
+.left-panel_item .item-icon {
+  width: 5rem;
+  height: 5rem;
+  margin-top: 2px;
+}
+
+.left-panel_item .item-title {
+  font-family: 'Poppins', serif;
+  font-weight: 700;
+  color: #5e6282;
+  font-size: 1.6rem;
+  line-height: 125%;
+}
+
+.left-panel_item .item-subtitle {
+  font-family: 'Poppins', serif;
+  font-weight: 400;
+  color: #5e6282;
+  font-size: 1.6rem;
+  line-height: 125%;
+  margin-top: 0.5rem;
+}
+
+.right-panel {
+  width: 45%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+}
+
+.right-panel_item {
+  width: 75%;
+  border-radius: 24px;
+  box-shadow: rgba(5, 5, 5, 0.02) -5px 20px 15px 9px;
+  background-color: #fff;
+}
+
+.right-panel_item::after {
+  content: '';
+  display: block;
+  clear: both;
+  width: 80px;
+  height: 100px;
+  background-color: transparent;
+  position: absolute;
+  top: 25%;
+  left: 40%;
+  z-index: -1;
+  border-radius: 50%;
+  box-shadow: 0 15px 140px 140px rgba(89, 177, 230, 0.5);
+}
+
+.right-panel_item .item-img {
+  width: 100%;
+  border-radius: 24px;
+  padding: 20px 24px 24px 24px;
+}
+
+.right-panel_item .item-title {
+  padding-left: 24px;
+  font-family: 'Poppins', serif;
+  font-weight: 400;
+  color: #080809;
+  font-size: 1.8rem;
+  line-height: 125%;
+}
+
+.right-panel_item .item-subtitle {
+  padding-left: 24px;
+  margin-top: 1.2rem;
+  font-family: 'Poppins', serif;
+  font-weight: 400;
+  color: #5e6282;
+  font-size: 1.6rem;
+  line-height: 125%;
+  letter-spacing: -0.05%;
+}
+
+.button_group {
+  margin-top: 2rem;
+  padding-left: 24px;
+}
+
+.button_group .button-icon {
+  width: 3.6rem;
+  height: 3.6rem;
+  margin-right: 1.8rem;
+}
+.item-footer {
+  display: flex;
+  padding-left: 24px;
+  padding-right: 24px;
+  margin-bottom: 3rem;
+  margin-top: 3rem;
+}
+.booking_count {
+  display: flex;
+  flex: 1;
+  position: relative;
+}
+
+.footer-text {
+  font-family: 'Poppins', serif;
+  font-weight: 400;
+  color: #84829a;
+  font-size: 1.6rem;
+  line-height: 125%;
+  flex: 1;
+  margin-left: 1.5rem;
+}
+
+.booking_count-icon {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+.footer-icon {
+  width: 2.4rem;
+  height: 2.4rem;
+}
+
+.booking_hover_item {
+  position: absolute;
+  background-color: #fff;
+  border-radius: 18px;
+  display: none;
+  width: 70%;
+  min-width: 25rem;
+  min-height: 12rem;
+  box-shadow: rgba(5, 5, 5, 0.02) -5px 20px 15px 9px;
+  top: -140px;
+  left: 210px;
+}
+
+.booking_hover_img {
+  width: 5rem;
+  height: 5rem;
+  margin: 1.8rem 2rem 1rem 1rem;
+}
+.booking_hover_decription {
+  flex: 1;
+}
+.booking_hover_status {
+  font-family: 'Poppins', serif;
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 125%;
+  color: #84829a;
+  margin-top: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.booking_hover_title {
+  font-family: 'Poppins', serif;
+  font-weight: 400;
+  font-size: 1.8rem;
+  line-height: 125%;
+  color: #080809;
+  margin-bottom: 1.5rem;
+}
+.percent-status {
+  font-family: 'Poppins', serif;
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 125%;
+  color: #8a79df;
+}
+
+.process-status {
+  font-family: 'Poppins', serif;
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 125%;
+  color: #080809;
+  margin-bottom: 1rem;
+}
+.process-bar {
+  position: relative;
+  width: var(--process-bar-width);
+  border-radius: 2px;
+  border: 2px solid #f5f5f5;
+  margin-bottom: 1rem;
+}
+
+.process-bar::after {
+  position: absolute;
+  content: '';
+  display: block;
+  width: calc(var(--process-bar-width) * 0.4);
+  border-radius: 2px;
+  border: 2px solid #8a79df;
+  top: -2px;
+  left: 0;
+}
+
+.booking_count:hover .booking_hover_item {
+  display: flex;
+}
