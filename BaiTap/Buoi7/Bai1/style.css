@@ -1,0 +1,32 @@
+.container {
+  justify-content: center;
+  align-items: center;
+  margin: 400px auto;
+  display: block;
+  width: fit-content;
+}
+.bar1,
+.bar2,
+.bar3 {
+  width: 35px;
+  height: 5px;
+  background-color: #333;
+  margin: 6px 0;
+  transition: 0.4s;
+}
+
+#check {
+  display: none;
+}
+
+#check:checked ~ .container .bar1 {
+  transform: rotate(-45deg) translate(-10px, 6px);
+}
+
+#check:checked ~ .container .bar2 {
+  opacity: 0;
+}
+
+#check:checked ~ .container .bar3 {
+  transform: rotate(45deg) translate(-9px, -7px);
+}
