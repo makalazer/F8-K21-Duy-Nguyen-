@@ -49,6 +49,7 @@ html {
 
 .banner {
   margin-top: 150px;
+  margin-bottom: 150px;
   display: flex;
 }
 
@@ -82,6 +83,7 @@ html {
 
 .left-panel__title {
   font-size: 4.8rem;
+  font-weight: 500;
   margin-bottom: 16px;
 }
 
@@ -105,6 +107,7 @@ html {
 
 .right-banner {
   width: 50%;
+  position: relative;
 }
 
 .transaction_container {
@@ -114,6 +117,17 @@ html {
   padding: 36px;
   margin-left: 120px;
   border-radius: 10px;
+  z-index: 10;
+  position: relative;
+}
+
+.transaction_background {
+  position: absolute;
+  top: -3%;
+  left: 42%;
+  width: 400px;
+  height: 400px;
+  z-index: 1;
 }
 
 .transaction_label {
@@ -211,13 +225,283 @@ html {
   border: 1px solid var(--grey-15);
   border-radius: 10px;
   display: flex;
+  margin-bottom: 24px;
 }
 
 .from_money_container,
 .to_money_container {
   flex: 1;
-  padding-left: 18px;
+  padding-top: 18px;
   background-color: inherit;
   display: flex;
   flex-direction: column;
+}
+
+.to_money_container {
+  border-left: 1px solid var(--grey-15);
+}
+
+.from_money_flag,
+.to_money_flag {
+  display: flex;
+  align-items: center;
+  background-color: inherit;
+  margin-bottom: 8px;
+  padding-left: 18px;
+}
+.from_money_flag img,
+.to_money_flag img {
+  width: 35px;
+  height: 35px;
+  margin-right: 6px;
+  background-color: inherit;
+}
+
+.currency {
+  font-size: 1.6rem;
+  font-weight: 300;
+}
+
+.from_money_country-name,
+.to_money_country-name {
+  font-size: 1.4rem;
+  background-color: inherit;
+  padding-bottom: 18px;
+  padding-left: 18px;
+  font-weight: 200;
+}
+
+.from_money_amount,
+.to_money_amount {
+  font-size: 1.8rem;
+  background-color: inherit;
+  padding: 24px 18px;
+  border-top: 1px solid var(--grey-15);
+}
+
+.exchange_button {
+  width: 100%;
+}
+
+.transaction_pop-up {
+  background-color: var(--secondary-bg-color);
+  display: flex;
+  align-items: center;
+  position: absolute;
+  padding: 28px;
+  border-radius: 10px;
+  top: -12%;
+  left: -18%;
+  z-index: 10;
+}
+
+.transaction_pop-up img {
+  width: 40px;
+  height: 40px;
+  background-color: inherit;
+  margin-right: 8px;
+}
+.pop-up_content {
+  background-color: inherit;
+}
+.transaction_pop-up .amount {
+  font-size: 1.8rem;
+  background-color: inherit;
+}
+
+.transaction_pop-up .pop-up_text {
+  font-size: 1.4rem;
+  font-weight: 200;
+  background-color: inherit;
+}
+.supported-currency_wrap {
+  background-color: var(--secondary-bg-color);
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  margin: 12px 0 0px 30%;
+  border-radius: 40px;
+  overflow: hidden;
+}
+
+.supported-currency_text {
+  background-color: inherit;
+  font-size: 1.6rem;
+  padding: 24px 10px 24px 20px;
+}
+
+.currency_wrap {
+  padding: 8px;
+  border-radius: 40px;
+  margin-right: 8px;
+}
+
+.currency_wrap img:not(:last-child) {
+  margin-right: 8px;
+}
+
+.product_section {
+  margin-bottom: 150px;
+}
+.product_intro {
+  display: flex;
+  margin-bottom: 100px;
+}
+.product-title_wrap {
+  width: 56%;
+}
+.product-section_title {
+  font-size: 4.8rem;
+  font-weight: 500;
+  margin-bottom: 14px;
+}
+
+.product-section_title span {
+  color: var(--primary-color);
+}
+
+.product__introduction {
+  font-size: 1.8rem;
+  font-weight: 100;
+  line-height: 150%;
+}
+
+.product-buttons_wrap {
+  display: flex;
+  flex: 1;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.product_buttons {
+  display: flex;
+  background-color: var(--grey-11);
+  border-top: 1px solid var(--grey-15);
+  border-radius: 60px;
+  padding: 10px 14px;
+}
+.product_buttons button {
+  font-size: 1.8rem;
+  font-weight: 300;
+  padding: 0 24px;
+}
+
+.product-card_wrap {
+  display: flex;
+}
+
+.product_card {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.product_card:not(:last-child) {
+  border-right: 1px solid var(--grey-15);
+}
+
+.product_card img {
+  height: 100px;
+  width: 100px;
+  margin-bottom: 3rem;
+}
+
+.product_card_title {
+  font-size: 2.4rem;
+  line-height: 150%;
+  font-weight: 400;
+  margin-bottom: 2rem;
+}
+
+.product_card_description {
+  font-size: 1.8rem;
+  font-weight: 100;
+  padding: 0 50px;
+}
+
+.use-case_wrapper {
+  display: flex;
+  gap: 10rem;
+  margin-bottom: 6rem;
+}
+
+.use-case_cards {
+  width: calc(50% - 50px);
+  padding: 50px;
+  background-color: var(--grey-11);
+  border-radius: 20px;
+  position: relative;
+}
+
+/* TODO */
+.use-case_cards_bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 200px;
+  opacity: 0.5;
+  z-index: 1;
+}
+
+.use-case_card {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  text-align: center;
+  border-radius: 16px;
+  background-color: var(--grey-10);
+  border: 1px solid var(--grey-15);
+}
+
+.use-case_card img {
+  width: 7.8rem;
+  height: 7.8rem;
+  margin-bottom: 2.4rem;
+  background-color: inherit;
+}
+
+.use-case_card-title {
+  font-size: 2rem;
+  font-weight: 200;
+  background-color: inherit;
+}
+
+.use-case_info {
+  width: calc(50% - 50px);
+}
+
+.use-case_info_title {
+  font-size: 3rem;
+  font-weight: 300;
+  line-height: 150%;
+  margin-bottom: 14px;
+}
+.use-case_info-description {
+  font-size: 1.8rem;
+  font-weight: 100;
+  margin-bottom: 6rem;
+}
+
+.percent_card {
+  margin-bottom: 6rem;
+}
+.percent_card:not(:last-child) {
+  margin-right: 10rem;
+}
+
+.use-case_percent {
+  font-size: 5.8rem;
+  line-height: 150%;
+  margin-bottom: 5px;
+}
+
+.use-case_percent_text {
+  font-size: 1.8rem;
+  font-weight: 100;
 }
