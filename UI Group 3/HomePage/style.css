@@ -96,6 +96,7 @@ html {
   font-size: 1.8rem;
   line-height: 150%;
   margin-bottom: 50px;
+  color: var(--white-90);
 }
 
 .left-banner__button {
@@ -419,6 +420,7 @@ html {
   font-size: 1.8rem;
   font-weight: 100;
   padding: 0 50px;
+  color: var(--grey-70);
 }
 
 .use-case_wrapper {
@@ -486,6 +488,7 @@ html {
   font-size: 1.8rem;
   font-weight: 100;
   margin-bottom: 6rem;
+  color: var(--grey-70);
 }
 
 .percent_card {
@@ -504,4 +507,90 @@ html {
 .use-case_percent_text {
   font-size: 1.8rem;
   font-weight: 100;
+  color: var(--grey-70);
+}
+
+.our-features_section {
+  margin-bottom: 80px;
+}
+.features_wrapper {
+  display: flex;
+}
+
+.accordion_button_group {
+  width: 22%;
+  margin-right: 3rem;
+}
+
+.button_vertical_group {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--grey-15);
+  border-radius: 12px;
+  background-color: var(--grey-11);
+  padding: 50px;
+  gap: 2.4rem;
+}
+
+.secondary_button.features_button {
+  background-color: var(--black);
+  border: 1px solid var(--grey-15);
+  text-align: left;
+  justify-content: flex-start;
+  padding-left: 2.4rem;
+}
+
+.normal_button.features_button {
+  background-color: var(--grey-11);
+  border: 1px solid var(--grey-15);
+  text-align: left;
+  justify-content: flex-start;
+  padding-left: 2.4rem;
+}
+
+.features_button:hover {
+  opacity: 0.5;
+  font-size: 1.8rem;
+}
+
+.features_info_cards {
+  flex: 1;
+  gap: 30px;
+}
+
+.features_info_card {
+  width: calc(50% - 15px);
+  background-color: var(--grey-11);
+  border: 1px solid var(--grey-15);
+  border-radius: 12px;
+  padding: 50px;
+}
+
+.features_info_card_title_wrapper {
+  display: flex;
+  background-color: inherit;
+  margin-bottom: 3rem;
+}
+
+.features_info_card_title_wrapper img {
+  background-color: inherit;
+  width: 34px;
+  height: 34px;
+}
+
+.features_info_card_title {
+  flex: 1;
+  background-color: inherit;
+  font-size: 2.2rem;
+  line-height: 150%;
+  font-weight: 300;
+}
+
+.features_info_card_description {
+  background-color: inherit;
+  font-size: 1.8rem;
+  font-weight: 1;
+  line-height: 150%;
+  letter-spacing: -0.6%;
+  color: var(--grey-70);
 }

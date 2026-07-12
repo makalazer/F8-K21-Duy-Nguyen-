@@ -5,7 +5,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  background-color: var(--black);
+  background-color: var(--grey-10);
   color: var(--white);
   font-family: var(--main-font);
 }
@@ -79,6 +79,7 @@
   font-weight: 100;
   line-height: 150%;
   max-width: 75%;
+  color: var(--grey-70);
 }
 
 .grid2x2 {
@@ -87,12 +88,12 @@
   gap: 4%;
 }
 
-.grid1x3 {
-  display: flex;
-}
-
 .grid2x2_item {
   width: 48%;
+}
+
+.grid1x3 {
+  display: flex;
 }
 
 .normal_button:hover {
