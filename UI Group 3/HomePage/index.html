@@ -1,14 +1,558 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Home</title>
-  </head>
-  <body>
-    <header class="header container">
-      <div class="navbar">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Home</title>
+</head>
+
+<body>
+  <header class="header container">
+    <div class="navbar">
+      <img src="../assest/Logo.svg" alt="" srcset="" />
+      <ul class="navbar_buttons">
+        <li class="normal_button navbar_item">Home</li>
+        <li class="normal_button navbar_item">Careers</li>
+        <li class="normal_button navbar_item">About</li>
+        <li class="normal_button navbar_item">Security</li>
+      </ul>
+      <button type="button" class="normal_button">Sign up</button>
+      <button class="primary_button">Login</button>
+    </div>
+  </header>
+  <section class="container banner">
+    <div class="left-banner">
+      <div class="banner_note">
+        <img src="../assest/note-check_Icon.svg" alt="" srcset="" />
+        <p class="banner_note_content">
+          No LLC Required, No Credit Check.
+        </p>
+      </div>
+      <h1 class="left-panel__title">
+        Welcome to YourBank Empowering Your
+        <span>Financial Journey</span>
+      </h1>
+      <p class="left-banner__description">
+        At YourBank, our mission is to provide comprehensive banking
+        solutions that empower individuals and businesses to achieve
+        their financial goals. We are committed to delivering
+        personalized and innovative services that prioritize our
+        customers' needs.
+      </p>
+      <button class="primary_button left-banner__button">
+        Open Account
+      </button>
+    </div>
+    <div class="right-banner">
+      <div class="transaction_container">
+        <p class="transaction_label">Your Transactions</p>
+        <div class="transaction-wrap">
+          <div class="transaction_item1">
+            <img src="../assest/tranfer_icon.svg" alt="" srcset="" />
+            <div class="transaction_content">
+              <p>Transaction</p>
+              <p class="client-name">Joel Kenley</p>
+            </div>
+            <div class="transfer-amount">
+              <p class>-$68</p>
+            </div>
+          </div>
+          <div class="transaction_item2">
+            <img src="../assest/tranfer_icon.svg" alt="" srcset="" />
+            <div class="transaction_content">
+              <p>Transaction</p>
+              <p class="client-name">Joel Kenley</p>
+            </div>
+            <div class="transfer-amount">
+              <p class>-$68</p>
+            </div>
+          </div>
+          <div class="transaction_item3">
+            <img src="../assest/tranfer_icon.svg" alt="" srcset="" />
+            <div class="transaction_content">
+              <p>Transaction</p>
+              <p class="client-name">Joel Kenley</p>
+            </div>
+            <div class="transfer-amount">
+              <p class>-$68</p>
+            </div>
+          </div>
+        </div>
+        <p class="transaction_label">Money Exchange</p>
+        <div class="money-exchange_container">
+          <div class="from_money_container">
+            <div class="from_money_flag">
+              <img src="../assest/INR_flagsvg.svg" alt="" srcset="" />
+              <span class="currency">INR</span>
+            </div>
+            <p class="from_money_country-name">Indian Rupees</p>
+            <p class="from_money_amount">5,000</p>
+          </div>
+          <div class="to_money_container">
+            <div class="to_money_flag">
+              <img src="../assest/USD_flagsvg.svg" alt="" srcset="" />
+              <span class="currency">USD</span>
+            </div>
+            <p class="to_money_country-name">
+              United States Dollar
+            </p>
+            <p class="to_money_amount">12.00</p>
+          </div>
+        </div>
+        <button class="secondary_button exchange_button">
+          Exchange
+        </button>
+        <div class="transaction_pop-up">
+          <img src="../assest/plus_icon.svg" alt="" srcset="" />
+          <div class="pop-up_content">
+            <p class="amount">+ $5000,00</p>
+            <p class="pop-up_text">Monthly Income</p>
+          </div>
+        </div>
+      </div>
+      <img src="../assest/transaction-bg.svg" alt="" srcset="" class="transaction_background" />
+      <div class="supported-currency_wrap">
+        <p class="supported-currency_text">Supported Currency</p>
+        <div class="currency_wrap">
+          <img src="../assest/USD_icon1.svg" alt="" srcset="" />
+          <img src="../assest/EUR_Icon1.svg" alt="" srcset="" />
+          <img src="../assest/BTC_icon1.svg" alt="" srcset="" />
+          <img src="../assest/ETH_icon1.svg" alt="" srcset="" />
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="product_section container">
+    <div class="section_info_with_button">
+      <div class="section_info_with_button_title_wrapper">
+        <h1 class="section_info_with_button_title">
+          Our <span class="primary_text_color">Products</span>
+        </h1>
+        <p class="section_info_with_button_introduction">
+          Discover a range of comprehensive and customizable
+          banking products at YourBank, designed to suit your
+          unique financial needs and aspirations
+        </p>
+      </div>
+      <div class="section_info_buttons_wrapper">
+        <div class="section_info_buttons">
+          <button class="primary_button">For Individuals</button>
+          <button class="normal_button">For Businesses</button>
+        </div>
+      </div>
+    </div>
+    <div class="product-card_wrap">
+      <div class="product_card">
+        <img src="../assest/product_card_icon1.svg" alt="" srcset="" />
+        <h3 class="product_card_title">Checking Accounts</h3>
+        <p class="product_card_description">
+          Enjoy easy and convenient access to your funds with our
+          range of checking account options. Benefit from features
+          such as online and mobile banking, debit cards, and free
+          ATM access.
+        </p>
+      </div>
+      <div class="product_card">
+        <img src="../assest/product_card_icon2.svg" alt="" srcset="" />
+        <h3 class="product_card_title">Savings Accounts</h3>
+        <p class="product_card_description">
+          Build your savings with our competitive interest rates
+          and flexible savings account options. Whether you're
+          saving for a specific goal or want to grow your wealth
+          over time, we have the right account for you.
+        </p>
+      </div>
+      <div class="product_card">
+        <img src="../assest/product_card_icon3.svg" alt="" srcset="" />
+        <h3 class="product_card_title">Loans and Mortgages</h3>
+        <p class="product_card_description">
+          Realize your dreams with our flexible loan and mortgage
+          options. From personal loans to home mortgages, our
+          experienced loan officers are here to guide you through
+          the application process and help you secure the funds
+          you need.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="use-case_section container">
+    <div class="section_info">
+      <h2 class="section_title primary_text_color">Use Cases</h2>
+      <h3 class="section_info_description">
+        At YourBank, we cater to the diverse needs of individuals
+        and businesses alike, offering a wide range of financial
+        solutions
+      </h3>
+    </div>
+    <div class="use-case_wrapper">
+      <div class="grid2x2 use-case_cards">
+        <div class="grid2x2_item use-case_card">
+          <img src="../assest/use-case_icon1.svg" alt="" srcset="" />
+          <h4 class="use-case_card-title">
+            Managing Personal Finances
+          </h4>
+        </div>
+        <div class="grid2x2_item use-case_card">
+          <img src="../assest/use-case_icon2.svg" alt="" srcset="" />
+          <h4 class="use-case_card-title">
+            Saving for the Future
+          </h4>
+        </div>
+        <div class="grid2x2_item use-case_card">
+          <img src="../assest/use-case_icon3.svg" alt="" srcset="" />
+          <h4 class="use-case_card-title">Homeownership</h4>
+        </div>
+        <div class="grid2x2_item use-case_card">
+          <img src="../assest/use-case_icon4.svg" alt="" srcset="" />
+          <h4 class="use-case_card-title">Education Funding</h4>
+        </div>
+        <!-- TODO -->
+        <!-- <img
+            src="../assest/grid4_bg_1.svg "
+            alt=""
+            srcset=""
+            class="use-case_cards_bg"
+          /> -->
+      </div>
+      <div class="use-case_info">
+        <h3 class="use-case_info_title">For Individuals</h3>
+        <p class="use-case_info-description">
+          For individuals, our mortgage services pave the way to
+          homeownership, and our flexible personal loans provide
+          vital support during various life milestones. We also
+          prioritize retirement planning, ensuring a financially
+          secure future for our customers
+        </p>
+        <div class="grid1x3 percent_cards">
+          <div class="gird1x3_item percent_card">
+            <p class="use-case_percent primary_text_color">
+              78%
+            </p>
+            <p class="use-case_percent_text">
+              Secure Retirement Planning
+            </p>
+          </div>
+          <div class="gird1x3_item percent_card">
+            <p class="use-case_percent primary_text_color">
+              63%
+            </p>
+            <p class="use-case_percent_text">
+              Manageable Debt Consolidation
+            </p>
+          </div>
+          <div class="gird1x3_item percent_card">
+            <p class="use-case_percent primary_text_color">
+              91%
+            </p>
+            <p class="use-case_percent_text">
+              Reducing financial burdens
+            </p>
+          </div>
+        </div>
+        <button class="normal_button">Learn More</button>
+      </div>
+    </div>
+    <div class="use-case_wrapper">
+      <div class="use-case_info">
+        <h3 class="use-case_info_title">For Business</h3>
+        <p class="use-case_info-description">
+          For businesses, we empower growth with working capital
+          solutions that optimize cash flow, and our tailored
+          financing options fuel business expansion. Whatever your
+          financial aspirations, YourBank is committed to
+          providing the right tools and support to achieve them
+        </p>
+        <div class="grid1x3 percent_cards">
+          <div class="gird1x3_item percent_card">
+            <p class="use-case_percent primary_text_color">
+              65%
+            </p>
+            <p class="use-case_percent_text">
+              Cash Flow Management
+            </p>
+          </div>
+          <div class="gird1x3_item percent_card">
+            <p class="use-case_percent primary_text_color">
+              70%
+            </p>
+            <p class="use-case_percent_text">
+              Drive Business Expansion
+            </p>
+          </div>
+          <div class="gird1x3_item percent_card">
+            <p class="use-case_percent primary_text_color">
+              45%
+            </p>
+            <p class="use-case_percent_text">
+              Streamline payroll processing
+            </p>
+          </div>
+        </div>
+        <button class="normal_button">Learn More</button>
+      </div>
+      <div class="grid2x2 use-case_cards">
+        <div class="grid2x2_item use-case_card">
+          <img src="../assest/use-case_icon5.svg" alt="" srcset="" />
+          <h4 class="use-case_card-title">
+            Startups and Entrepreneurs
+          </h4>
+        </div>
+        <div class="grid2x2_item use-case_card">
+          <img src="../assest/use-case_icon6.svg" alt="" srcset="" />
+          <h4 class="use-case_card-title">
+            Cash Flow Management
+          </h4>
+        </div>
+        <div class="grid2x2_item use-case_card">
+          <img src="../assest/use-case_icon7.svg" alt="" srcset="" />
+          <h4 class="use-case_card-title">Business Expansion</h4>
+        </div>
+        <div class="grid2x2_item use-case_card">
+          <img src="../assest/use-case_icon8.svg" alt="" srcset="" />
+          <h4 class="use-case_card-title">Payment Solutions</h4>
+        </div>
+        <!-- TODO -->
+        <!-- <img
+            src="../assest/grid4_bg_1.svg "
+            alt=""
+            srcset=""
+            class="use-case_cards_bg"
+          /> -->
+      </div>
+    </div>
+  </section>
+  <section class="our-features_section container">
+    <div class="section_info">
+      <h2 class="section_title">
+        Our <span class="primary_text_color"> Features </span>
+      </h2>
+      <h3 class="section_info_description">
+        Experience a host of powerful features at YourBank,
+        including seamless online banking, secure transactions, and
+        personalized financial insights, all designed to enhance
+        your banking experience
+      </h3>
+    </div>
+    <div class="features_wrapper">
+      <div class="accordion_button_group">
+        <div class="button_vertical_group">
+          <button class="secondary_button features_button">
+            Online Banking
+          </button>
+          <button class="normal_button features_button">
+            Financial Tools
+          </button>
+          <button class="normal_button features_button">
+            Customer Support
+          </button>
+        </div>
+      </div>
+      <div class="grid2x2 features_info_cards">
+        <div class="grid2x2_item features_info_card">
+          <div class="features_info_card_title_wrapper">
+            <h4 class="features_info_card_title">
+              24/7 Account Access
+            </h4>
+            <img src="../assest/our-features-info-card_Icon.svg" alt="" srcset="" />
+          </div>
+          <p class="features_info_card_description">
+            Enjoy the convenience of accessing your accounts
+            anytime, anywhere through our secure online banking
+            platform. Check balances, transfer funds, and pay
+            bills with ease.
+          </p>
+        </div>
+        <div class="grid2x2_item features_info_card">
+          <div class="features_info_card_title_wrapper">
+            <h4 class="features_info_card_title">
+              24/7 Account Access
+            </h4>
+            <img src="../assest/our-features-info-card_Icon.svg" alt="" srcset="" />
+          </div>
+          <p class="features_info_card_description">
+            Enjoy the convenience of accessing your accounts
+            anytime, anywhere through our secure online banking
+            platform. Check balances, transfer funds, and pay
+            bills with ease.
+          </p>
+        </div>
+        <div class="grid2x2_item features_info_card">
+          <div class="features_info_card_title_wrapper">
+            <h4 class="features_info_card_title">
+              24/7 Account Access
+            </h4>
+            <img src="../assest/our-features-info-card_Icon.svg" alt="" srcset="" />
+          </div>
+          <p class="features_info_card_description">
+            Enjoy the convenience of accessing your accounts
+            anytime, anywhere through our secure online banking
+            platform. Check balances, transfer funds, and pay
+            bills with ease.
+          </p>
+        </div>
+        <div class="grid2x2_item features_info_card">
+          <div class="features_info_card_title_wrapper">
+            <h4 class="features_info_card_title">
+              24/7 Account Access
+            </h4>
+            <img src="../assest/our-features-info-card_Icon.svg" alt="" srcset="" />
+          </div>
+          <p class="features_info_card_description">
+            Enjoy the convenience of accessing your accounts
+            anytime, anywhere through our secure online banking
+            platform. Check balances, transfer funds, and pay
+            bills with ease.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="frequently-asked-questions_section container">
+    <div class="section_info">
+      <h2 class="section_title">
+        <span class="primary_text_color"> Frequently </span>
+        Asked Questions
+      </h2>
+      <h3 class="section_info_description">
+        Still you have any questions? Contact our Team via
+        support@yourbank.com
+      </h3>
+    </div>
+    <div class="grid2x2 question_cards">
+      <div class="grid2x2_item question_card">
+        <p class="question">
+          How do I open an account with YourBank?
+        </p>
+        <p class="answser">
+          Opening an account with YourBank is easy. Simply visit
+          our website and click on the "Open an Account" button.
+          Follow the prompts, provide the required information,
+          and complete the application process. If you have any
+          questions or need assistance, our customer support team
+          is available to help.
+        </p>
+      </div>
+      <div class="grid2x2_item question_card">
+        <p class="question">
+          How do I open an account with YourBank?
+        </p>
+        <p class="answser">
+          Opening an account with YourBank is easy. Simply visit
+          our website and click on the "Open an Account" button.
+          Follow the prompts, provide the required information,
+          and complete the application process. If you have any
+          questions or need assistance, our customer support team
+          is available to help.
+        </p>
+      </div>
+      <div class="grid2x2_item question_card">
+        <p class="question">
+          How do I open an account with YourBank?
+        </p>
+        <p class="answser">
+          Opening an account with YourBank is easy. Simply visit
+          our website and click on the "Open an Account" button.
+          Follow the prompts, provide the required information,
+          and complete the application process. If you have any
+          questions or need assistance, our customer support team
+          is available to help.
+        </p>
+      </div>
+      <div class="grid2x2_item question_card">
+        <p class="question">
+          How do I open an account with YourBank?
+        </p>
+        <p class="answser">
+          Opening an account with YourBank is easy. Simply visit
+          our website and click on the "Open an Account" button.
+          Follow the prompts, provide the required information,
+          and complete the application process. If you have any
+          questions or need assistance, our customer support team
+          is available to help.
+        </p>
+      </div>
+    </div>
+    <button class="normal_button FAQ_button">
+      Load All FAQ’s
+      <img src="../assest/FAQ_button_icon.svg" alt="" />
+    </button>
+  </section>
+  <section class="our_testimonials_section container">
+    <div class="section_info_with_button">
+      <div class="section_info_with_button_title_wrapper">
+        <h1 class="section_info_with_button_title">
+          Our <span class="primary_text_color">Testimonials</span>
+        </h1>
+        <p class="section_info_with_button_introduction">
+          Discover how YourBank has transformed lives with
+          innovative digital solutions and personalized customer
+          service. See why our clients trust us for a secure and
+          prosperous financial journey
+        </p>
+      </div>
+      <div class="section_info_buttons_wrapper">
+        <div class="section_info_buttons">
+          <button class="primary_button">For Individuals</button>
+          <button class="normal_button">For Businesses</button>
+        </div>
+      </div>
+    </div>
+    <div class="testimonials_wrapper">
+      <img src="../assest/Button_arrow_icon.svg" alt="" srcset="" class="left-arrow_icon" />
+      <div class="grid1x3 testimonial_cards">
+        <div class="gird1x3_item testimonial_card">
+          <img src="../assest/Double-quotation-marks_icon.svg" alt="" srcset="" />
+          <p class="testimonial_content">
+            I recently started my own business, and YourBank has
+            been instrumental in helping me set up my business
+            accounts and secure the financing I needed. Their
+            expert guidance and tailored solutions have been
+            invaluable.
+          </p>
+          <p class="testimaial_author primary_text_color">
+            John D
+          </p>
+        </div>
+        <div class="gird1x3_item testimonial_card">
+          <img src="../assest/Double-quotation-marks_icon.svg" alt="" srcset="" />
+          <p class="testimonial_content">
+            YourBank has been my trusted financial partner for years. Their personalized service and innovative digital
+            banking solutions have made managing my finances a breeze.
+          </p>
+          <p class="testimaial_author primary_text_color">
+            Sara T
+          </p>
+        </div>
+        <div class="gird1x3_item testimonial_card">
+          <img src="../assest/Double-quotation-marks_icon.svg" alt="" srcset="" />
+          <p class="testimonial_content">
+            I love the convenience of YourBank's mobile banking app. It allows me to stay on top of my finances and make
+            transactions on the go. The app is user-friendly and secure, giving me peace of mind.
+          </p>
+          <p class="testimaial_author primary_text_color">
+            Emily G
+        </div>
+      </div>
+      <img src="../assest/Button_arrow_icon.svg" alt="" srcset="" class="right-arrow_icon" />
+    </div>
+  </section>
+  <div class="full-width_banner container">
+    <div class="banner_text_wrapper">
+      <h2 class="banner_title">
+        Start your financial journey with
+        <span class="primary_text_color">YourBank today!</span>
+      </h2>
+      <p class="banner_content">Ready to take control of your finances? Join YourBank now, and let us help you achieve
+        your financial goals with our tailored solutions and exceptional customer service</p>
+    </div>
+    <button class="primary_button">Open Account</button>
+  </div>
+  <footer class="footer">
+    <div class="full-width_container secondary_bg_color">
+      <div class="container footer_wrapper">
         <img src="../assest/Logo.svg" alt="" srcset="" />
         <ul class="navbar_buttons">
           <li class="normal_button navbar_item">Home</li>
@@ -16,369 +560,8 @@
           <li class="normal_button navbar_item">About</li>
           <li class="normal_button navbar_item">Security</li>
         </ul>
-        <button type="button" class="normal_button">Sign up</button>
-        <button class="primary_button">Login</button>
       </div>
-    </header>
-    <section class="container banner">
-      <div class="left-banner">
-        <div class="banner_note">
-          <img src="../assest/note-check_Icon.svg" alt="" srcset="" />
-          <p class="banner_note_content">No LLC Required, No Credit Check.</p>
-        </div>
-        <h1 class="left-panel__title">
-          Welcome to YourBank Empowering Your
-          <span>Financial Journey</span>
-        </h1>
-        <p class="left-banner__description">
-          At YourBank, our mission is to provide comprehensive banking solutions
-          that empower individuals and businesses to achieve their financial
-          goals. We are committed to delivering personalized and innovative
-          services that prioritize our customers' needs.
-        </p>
-        <button class="primary_button left-banner__button">Open Account</button>
-      </div>
-      <div class="right-banner">
-        <div class="transaction_container">
-          <p class="transaction_label">Your Transactions</p>
-          <div class="transaction-wrap">
-            <div class="transaction_item1">
-              <img src="../assest/tranfer_icon.svg" alt="" srcset="" />
-              <div class="transaction_content">
-                <p>Transaction</p>
-                <p class="client-name">Joel Kenley</p>
-              </div>
-              <div class="transfer-amount">
-                <p class>-$68</p>
-              </div>
-            </div>
-            <div class="transaction_item2">
-              <img src="../assest/tranfer_icon.svg" alt="" srcset="" />
-              <div class="transaction_content">
-                <p>Transaction</p>
-                <p class="client-name">Joel Kenley</p>
-              </div>
-              <div class="transfer-amount">
-                <p class>-$68</p>
-              </div>
-            </div>
-            <div class="transaction_item3">
-              <img src="../assest/tranfer_icon.svg" alt="" srcset="" />
-              <div class="transaction_content">
-                <p>Transaction</p>
-                <p class="client-name">Joel Kenley</p>
-              </div>
-              <div class="transfer-amount">
-                <p class>-$68</p>
-              </div>
-            </div>
-          </div>
-          <p class="transaction_label">Money Exchange</p>
-          <div class="money-exchange_container">
-            <div class="from_money_container">
-              <div class="from_money_flag">
-                <img src="../assest/INR_flagsvg.svg" alt="" srcset="" />
-                <span class="currency">INR</span>
-              </div>
-              <p class="from_money_country-name">Indian Rupees</p>
-              <p class="from_money_amount">5,000</p>
-            </div>
-            <div class="to_money_container">
-              <div class="to_money_flag">
-                <img src="../assest/USD_flagsvg.svg" alt="" srcset="" />
-                <span class="currency">USD</span>
-              </div>
-              <p class="to_money_country-name">United States Dollar</p>
-              <p class="to_money_amount">12.00</p>
-            </div>
-          </div>
-          <button class="secondary_button exchange_button">Exchange</button>
-          <div class="transaction_pop-up">
-            <img src="../assest/plus_icon.svg" alt="" srcset="" />
-            <div class="pop-up_content">
-              <p class="amount">+ $5000,00</p>
-              <p class="pop-up_text">Monthly Income</p>
-            </div>
-          </div>
-        </div>
-        <img
-          src="../assest/transaction-bg.svg"
-          alt=""
-          srcset=""
-          class="transaction_background"
-        />
-        <div class="supported-currency_wrap">
-          <p class="supported-currency_text">Supported Currency</p>
-          <div class="currency_wrap">
-            <img src="../assest/USD_icon1.svg" alt="" srcset="" />
-            <img src="../assest/EUR_Icon1.svg" alt="" srcset="" />
-            <img src="../assest/BTC_icon1.svg" alt="" srcset="" />
-            <img src="../assest/ETH_icon1.svg" alt="" srcset="" />
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="product_section container">
-      <div class="product_intro">
-        <div class="product-title_wrap">
-          <h1 class="product-section_title">Our <span>Products</span></h1>
-          <p class="product__introduction">
-            Discover a range of comprehensive and customizable banking products
-            at YourBank, designed to suit your unique financial needs and
-            aspirations
-          </p>
-        </div>
-        <div class="product-buttons_wrap">
-          <div class="product_buttons">
-            <button class="primary_button">For Individuals</button>
-            <button class="normal_button">For Businesses</button>
-          </div>
-        </div>
-      </div>
-      <div class="product-card_wrap">
-        <div class="product_card">
-          <img src="../assest/product_card_icon1.svg" alt="" srcset="" />
-          <h3 class="product_card_title">Checking Accounts</h3>
-          <p class="product_card_description">
-            Enjoy easy and convenient access to your funds with our range of
-            checking account options. Benefit from features such as online and
-            mobile banking, debit cards, and free ATM access.
-          </p>
-        </div>
-        <div class="product_card">
-          <img src="../assest/product_card_icon2.svg" alt="" srcset="" />
-          <h3 class="product_card_title">Savings Accounts</h3>
-          <p class="product_card_description">
-            Build your savings with our competitive interest rates and flexible
-            savings account options. Whether you're saving for a specific goal
-            or want to grow your wealth over time, we have the right account for
-            you.
-          </p>
-        </div>
-        <div class="product_card">
-          <img src="../assest/product_card_icon3.svg" alt="" srcset="" />
-          <h3 class="product_card_title">Loans and Mortgages</h3>
-          <p class="product_card_description">
-            Realize your dreams with our flexible loan and mortgage options.
-            From personal loans to home mortgages, our experienced loan officers
-            are here to guide you through the application process and help you
-            secure the funds you need.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="use-case_section container">
-      <div class="section_info">
-        <h2 class="section_title primary_text_color">Use Cases</h2>
-        <h3 class="section_info_description">
-          At YourBank, we cater to the diverse needs of individuals and
-          businesses alike, offering a wide range of financial solutions
-        </h3>
-      </div>
-      <div class="use-case_wrapper">
-        <div class="grid2x2 use-case_cards">
-          <div class="grid2x2_item use-case_card">
-            <img src="../assest/use-case_icon1.svg" alt="" srcset="" />
-            <h4 class="use-case_card-title">Managing Personal Finances</h4>
-          </div>
-          <div class="grid2x2_item use-case_card">
-            <img src="../assest/use-case_icon2.svg" alt="" srcset="" />
-            <h4 class="use-case_card-title">Saving for the Future</h4>
-          </div>
-          <div class="grid2x2_item use-case_card">
-            <img src="../assest/use-case_icon3.svg" alt="" srcset="" />
-            <h4 class="use-case_card-title">Homeownership</h4>
-          </div>
-          <div class="grid2x2_item use-case_card">
-            <img src="../assest/use-case_icon4.svg" alt="" srcset="" />
-            <h4 class="use-case_card-title">Education Funding</h4>
-          </div>
-          <!-- TODO -->
-          <!-- <img
-            src="../assest/grid4_bg_1.svg "
-            alt=""
-            srcset=""
-            class="use-case_cards_bg"
-          /> -->
-        </div>
-        <div class="use-case_info">
-          <h3 class="use-case_info_title">For Individuals</h3>
-          <p class="use-case_info-description">
-            For individuals, our mortgage services pave the way to
-            homeownership, and our flexible personal loans provide vital support
-            during various life milestones. We also prioritize retirement
-            planning, ensuring a financially secure future for our customers
-          </p>
-          <div class="grid1x3 percent_cards">
-            <div class="gird1x3_item percent_card">
-              <p class="use-case_percent primary_text_color">78%</p>
-              <p class="use-case_percent_text">Secure Retirement Planning</p>
-            </div>
-            <div class="gird1x3_item percent_card">
-              <p class="use-case_percent primary_text_color">63%</p>
-              <p class="use-case_percent_text">Manageable Debt Consolidation</p>
-            </div>
-            <div class="gird1x3_item percent_card">
-              <p class="use-case_percent primary_text_color">91%</p>
-              <p class="use-case_percent_text">Reducing financial burdens</p>
-            </div>
-          </div>
-          <button class="normal_button">Learn More</button>
-        </div>
-      </div>
-      <div class="use-case_wrapper">
-        <div class="use-case_info">
-          <h3 class="use-case_info_title">For Business</h3>
-          <p class="use-case_info-description">
-            For businesses, we empower growth with working capital solutions
-            that optimize cash flow, and our tailored financing options fuel
-            business expansion. Whatever your financial aspirations, YourBank is
-            committed to providing the right tools and support to achieve them
-          </p>
-          <div class="grid1x3 percent_cards">
-            <div class="gird1x3_item percent_card">
-              <p class="use-case_percent primary_text_color">65%</p>
-              <p class="use-case_percent_text">Cash Flow Management</p>
-            </div>
-            <div class="gird1x3_item percent_card">
-              <p class="use-case_percent primary_text_color">70%</p>
-              <p class="use-case_percent_text">Drive Business Expansion</p>
-            </div>
-            <div class="gird1x3_item percent_card">
-              <p class="use-case_percent primary_text_color">45%</p>
-              <p class="use-case_percent_text">Streamline payroll processing</p>
-            </div>
-          </div>
-          <button class="normal_button">Learn More</button>
-        </div>
-        <div class="grid2x2 use-case_cards">
-          <div class="grid2x2_item use-case_card">
-            <img src="../assest/use-case_icon5.svg" alt="" srcset="" />
-            <h4 class="use-case_card-title">Startups and Entrepreneurs</h4>
-          </div>
-          <div class="grid2x2_item use-case_card">
-            <img src="../assest/use-case_icon6.svg" alt="" srcset="" />
-            <h4 class="use-case_card-title">Cash Flow Management</h4>
-          </div>
-          <div class="grid2x2_item use-case_card">
-            <img src="../assest/use-case_icon7.svg" alt="" srcset="" />
-            <h4 class="use-case_card-title">Business Expansion</h4>
-          </div>
-          <div class="grid2x2_item use-case_card">
-            <img src="../assest/use-case_icon8.svg" alt="" srcset="" />
-            <h4 class="use-case_card-title">Payment Solutions</h4>
-          </div>
-          <!-- TODO -->
-          <!-- <img
-            src="../assest/grid4_bg_1.svg "
-            alt=""
-            srcset=""
-            class="use-case_cards_bg"
-          /> -->
-        </div>
-      </div>
-    </section>
-    <section class="our-features_section container">
-      <div class="section_info">
-        <h2 class="section_title">
-          Our <span class="primary_text_color"> Features </span>
-        </h2>
-        <h3 class="section_info_description">
-          Experience a host of powerful features at YourBank, including seamless
-          online banking, secure transactions, and personalized financial
-          insights, all designed to enhance your banking experience
-        </h3>
-      </div>
-      <div class="features_wrapper">
-        <div class="accordion_button_group">
-          <div class="button_vertical_group">
-            <button class="secondary_button features_button">
-              Online Banking
-            </button>
-            <button class="normal_button features_button">
-              Financial Tools
-            </button>
-            <button class="normal_button features_button">
-              Customer Support
-            </button>
-          </div>
-        </div>
-        <div class="grid2x2 features_info_cards">
-          <div class="grid2x2_item features_info_card">
-            <div class="features_info_card_title_wrapper">
-              <h4 class="features_info_card_title">24/7 Account Access</h4>
-              <img
-                src="../assest/our-features-info-card_Icon.svg"
-                alt=""
-                srcset=""
-              />
-            </div>
-            <p class="features_info_card_description">
-              Enjoy the convenience of accessing your accounts anytime, anywhere
-              through our secure online banking platform. Check balances,
-              transfer funds, and pay bills with ease.
-            </p>
-          </div>
-          <div class="grid2x2_item features_info_card">
-            <div class="features_info_card_title_wrapper">
-              <h4 class="features_info_card_title">24/7 Account Access</h4>
-              <img
-                src="../assest/our-features-info-card_Icon.svg"
-                alt=""
-                srcset=""
-              />
-            </div>
-            <p class="features_info_card_description">
-              Enjoy the convenience of accessing your accounts anytime, anywhere
-              through our secure online banking platform. Check balances,
-              transfer funds, and pay bills with ease.
-            </p>
-          </div>
-          <div class="grid2x2_item features_info_card">
-            <div class="features_info_card_title_wrapper">
-              <h4 class="features_info_card_title">24/7 Account Access</h4>
-              <img
-                src="../assest/our-features-info-card_Icon.svg"
-                alt=""
-                srcset=""
-              />
-            </div>
-            <p class="features_info_card_description">
-              Enjoy the convenience of accessing your accounts anytime, anywhere
-              through our secure online banking platform. Check balances,
-              transfer funds, and pay bills with ease.
-            </p>
-          </div>
-          <div class="grid2x2_item features_info_card">
-            <div class="features_info_card_title_wrapper">
-              <h4 class="features_info_card_title">24/7 Account Access</h4>
-              <img
-                src="../assest/our-features-info-card_Icon.svg"
-                alt=""
-                srcset=""
-              />
-            </div>
-            <p class="features_info_card_description">
-              Enjoy the convenience of accessing your accounts anytime, anywhere
-              through our secure online banking platform. Check balances,
-              transfer funds, and pay bills with ease.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="frequently-asked-questions_section container">
-      <div class="section_info">
-        <h2 class="section_title">
-          <span class="primary_text_color"> Frequently </span>
-          Asked Questions
-        </h2>
-        <h3 class="section_info_description">
-          Still you have any questions? Contact our Team via
-          support@yourbank.com
-        </h3>
-      </div>
-    </section>
-  </body>
+    </div>
+  </footer>
+</body>
 </html>
