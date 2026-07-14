@@ -1,0 +1,122 @@
+@import url(../base.css);
+@import url(../CommonCSS/our_testimonials_section.css);
+
+.login_wrapper {
+  position: relative;
+  width: 70%;
+  margin: 5rem auto 15rem auto;
+  background-image: url(../assest/Bg-img/Login_bg.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  padding: 10rem 15rem;
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login_title {
+  font-size: 4.8rem;
+  font-weight: 400;
+  margin-bottom: 2rem;
+}
+
+.login_subtitle {
+  font-size: 1.8rem;
+  font-weight: 100;
+  color: var(--grey-75);
+  margin-bottom: 8rem;
+}
+
+.login_form {
+  position: relative;
+  width: 100%;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input_wrapper {
+  width: 100%;
+  display: flex;
+  background-color: inherit;
+  gap: 3rem;
+  position: relative;
+  margin-bottom: 4rem;
+}
+
+.login_form input {
+  background-color: var(--grey-10);
+  height: 7.5rem;
+  flex: 1;
+  border: 1px solid var(--grey-15);
+  border-radius: 50px;
+}
+
+.login_form input::placeholder {
+  font-size: 1.8rem;
+  line-height: 150%;
+  padding-left: 2.4rem;
+}
+.show_pass_button {
+  position: absolute;
+  height: 24px;
+  width: 24px;
+  top: calc(50% - 12px);
+  right: 24px;
+}
+
+.forgot-pass_text {
+  font-size: 1.8rem;
+  font-weight: 300;
+  text-decoration: underline;
+  margin-bottom: 4rem;
+}
+
+.login_form button {
+  width: 45%;
+  margin-bottom: 2.4rem;
+}
+
+.sign-up_button {
+  background-color: var(--grey-20);
+  border: 1px solid var(--grey-15);
+}
+
+.sso_text {
+  width: 55%;
+  text-align: center;
+  position: relative;
+  font-size: 1.8rem;
+  font-weight: 100;
+  margin: 0 auto;
+  background-color: var(--grey-10);
+  z-index: 10;
+}
+.sso_wrapper {
+  width: 45%;
+  position: relative;
+  margin-bottom: 3rem;
+}
+.sso_wrapper::before {
+  content: '';
+  position: absolute;
+  z-index: 5;
+  width: 100%;
+  top: 50%;
+  left: 0;
+  border: 1px solid var(--grey-15);
+}
+
+.login_button_group {
+  background-color: inherit;
+}
+
+.login_button_group img {
+  background-color: inherit;
+}
+
+.login_button_group img:not(:last-child) {
+  margin-right: 2.4rem;
+}
