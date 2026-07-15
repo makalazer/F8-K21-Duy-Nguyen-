@@ -1,6 +1,6 @@
 @import url(../base.css);
 @import url(../CommonCSS/our_testimonials_section.css);
-
+@import url(../CommonCSS/FAQ.css);
 /* navbar */
 
 .banner {
@@ -336,7 +336,6 @@
 .use-case_wrapper {
   display: flex;
   gap: 10rem;
-  margin-bottom: 6rem;
 }
 
 .use-case_cards {
@@ -516,151 +515,6 @@
   letter-spacing: -0.6%;
   color: var(--grey-70);
 }
-
-.frequently-asked-questions_section {
-  margin-bottom: 150px;
-}
-.question_cards {
-  gap: 30px;
-  position: relative;
-}
-.question_card {
-  padding: 50px;
-  width: calc(50% - 15px);
-  border: 1px solid var(--grey-15);
-  border-radius: 14px;
-}
-.question {
-  font-size: 2rem;
-  font-weight: 300;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--grey-15);
-}
-
-.answser {
-  font-size: 1.8rem;
-  line-height: 150%;
-  color: var(--grey-70);
-  padding-top: 1.5rem;
-}
-
-.question_cards::after {
-  content: '';
-  position: absolute;
-  z-index: 10;
-  top: 50%;
-  width: 100%;
-  height: 50%;
-  background-image: linear-gradient(to bottom, #19191900, #191919);
-}
-
-.FAQ_button {
-  margin: 0 auto;
-  display: flex;
-  font-size: 1.8rem;
-  font-weight: 200;
-}
-
-.FAQ_button img {
-  margin-left: 4px;
-  background-color: inherit;
-}
-
-/* .our_testimonials_section {
-  margin-bottom: 150px;
-}
-
-.testimonials_wrapper {
-  display: flex;
-  align-items: center;
-}
-
-.testimonial_cards {
-  position: relative;
-}
-
-.testimonial_cards::before {
-  content: '';
-  position: absolute;
-  z-index: 10;
-  height: 100%;
-  width: 40%;
-  top: 0;
-  left: 0;
-  background-image: linear-gradient(to left, #19191900, #191919);
-}
-
-.testimonial_cards::after {
-  content: '';
-  position: absolute;
-  z-index: 10;
-  height: 100%;
-  width: 40%;
-  top: 0;
-  right: 0;
-  background-image: linear-gradient(to right, #19191900, #191919);
-}
-
-.testimonial_card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.testimonial_card:not(:last-child) {
-  margin-right: 80px;
-}
-
-.testimonial_card img {
-  position: relative;
-  height: 6rem;
-  width: 10rem;
-  z-index: 10;
-  padding-left: 6px;
-  margin-bottom: 6rem;
-}
-
-.testimonial_card::before {
-  content: '';
-  position: absolute;
-  z-index: 5;
-  width: 100%;
-  top: 3rem;
-  border: 1px solid var(--grey-15);
-}
-
-.testimonial_content {
-  font-size: 1.8rem;
-  font-weight: 200;
-  line-height: 150%;
-  text-align: center;
-  margin-bottom: 5rem;
-}
-
-.testimonial_author {
-  font-size: 1.8rem;
-  font-weight: 200;
-  line-height: 150%;
-  text-align: center;
-}
-
-.left-arrow_icon {
-  min-height: 6rem;
-  min-width: 6rem;
-  margin-right: 5rem;
-}
-
-.right-arrow_icon {
-  min-height: 6rem;
-  min-width: 6rem;
-  margin-left: 5rem;
-  transform: rotate(180deg);
-  -webkit-transform: rotate(180deg);
-  -moz-transform: rotate(180deg);
-  -ms-transform: rotate(180deg);
-  -o-transform: rotate(180deg);
-} */
 
 .banner_text_wrapper {
   flex: 1;

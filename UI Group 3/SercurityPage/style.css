@@ -1,0 +1,107 @@
+@import url(../base.css);
+@import url(../CommonCSS/FAQ.css);
+
+.security_banner {
+  margin-top: 5rem;
+  padding: 5rem;
+  background-image: url(../assest/Bg-img/sercurity_banner_bg.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  border-radius: 20px;
+}
+.security_banner_wrapper {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  border-radius: 20px;
+  background-color: transparent;
+  overflow: hidden;
+}
+.security_banner_text {
+  padding: 8rem;
+  width: 50%;
+  border-radius: 20px 0 80px 20px;
+  background-color: var(--grey-10);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+.security_banner_title {
+  background-color: inherit;
+  font-size: 5.8rem;
+  line-height: 130%;
+  position: relative;
+  margin-bottom: 3rem;
+}
+.security_banner_content {
+  font-size: 1.8rem;
+  color: var(--grey-70);
+  font-weight: 100;
+  line-height: 150%;
+}
+.security_banner_img {
+  width: 60%;
+  min-height: 700px;
+  background-image: url(../assest/Bg-img/sercurity_banner_img.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.security_content {
+  margin-top: 5rem;
+  padding: 9rem;
+  background-image: url(../assest/Bg-img/SecurityBackground\ Image.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  border-radius: 50px;
+  position: relative;
+  min-height: 640px;
+  margin-bottom: 300px;
+}
+
+.security_cards_wrapper {
+  position: absolute;
+  width: calc(100% - 18rem);
+  background-color: transparent;
+}
+
+.security_cards {
+  gap: 3rem;
+  position: relative;
+  background-color: transparent;
+}
+
+.security_card { 
+  background-image: url(../assest/Bg-img/SecurityBackground\ Image.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  padding: 5rem;
+  border-radius: 20px;
+  width: calc(50% - 1.5rem);
+}
+
+.security_card_title_wrapper {
+  display: flex;
+  background-color: transparent;
+  align-items: center;
+  margin-bottom: 2.4rem;
+}
+.security_card_title_wrapper img {
+  background-color: transparent;
+  margin-right: 2rem;
+}
+
+.security_card_title {
+  font-size: 2.4rem;
+  line-height: 150%;
+  font-weight: 300;
+}
+
+.security_card_text {
+  font-size: 1.8rem;
+  font-weight: 100;
+  line-height: 150%;
+  color: var(--grey-70);
+  background-color: transparent;
+}

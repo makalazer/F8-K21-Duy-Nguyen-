@@ -55,6 +55,11 @@ a {
   width: 85% !important;
   margin: 0 auto;
 }
+
+section {
+  margin-bottom: 150px !important;
+}
+
 .primary_text_color {
   color: var(--primary-color);
 }
@@ -156,7 +161,10 @@ a {
   display: flex;
   padding: 8rem;
   margin-bottom: 150px;
-  background-color: var(--grey-11);
+  background-color: transparent;
+  background-image: url(./assest/Bg-img/CTA\ Section.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
   border: 1px solid var(--grey-15);
   border-radius: 20px;
   align-items: center;
