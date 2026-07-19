@@ -728,4 +728,29 @@
     border: 1px solid var(--grey-15);
     font-size: 1.4rem;
   }
+  .accordion_button_group {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .button_vertical_group {
+    flex-direction: row;
+    padding: 20px;
+    gap: 20px;
+  }
+  .features_button {
+    font-size: 1.2rem;
+    text-align: center !important;
+    padding-left: none !important;
+    padding: 14px 20px !important;
+    border-radius: 60px;
+  }
+
+  .features_wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  .features_info_card {
+    width: 100%;
+  }
 }
