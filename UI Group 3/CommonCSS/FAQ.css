@@ -46,3 +46,31 @@
   margin-left: 4px;
   background-color: inherit;
 }
+
+@media screen and (max-width: 440px) {
+  .question_cards {
+    gap: 20px;
+  }
+  .question_card {
+    width: 100%;
+    padding: 30px;
+  }
+  .question {
+    padding-bottom: 20px;
+    font-size: 1.8rem;
+    font-weight: 400;
+  }
+  .answer {
+    padding-top: 20px;
+    font-size: 1.4rem;
+    font-weight: 200;
+  }
+  .FAQ_button {
+    background-color: var(--grey-11);
+    border: 1px solid var(--grey-15);
+    font-size: 1.4rem;
+  }
+  .FAQ_button img {
+    height: 18px;
+  }
+}

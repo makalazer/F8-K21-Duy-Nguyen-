@@ -159,7 +159,7 @@ section {
 
 .full-width_banner {
   display: flex;
-  padding: 8rem;
+  padding: 80px;
   margin-bottom: 150px;
   background-color: transparent;
   background-image: url(./assest/Bg-img/CTA\ Section.png);
@@ -217,9 +217,75 @@ section {
   opacity: 0.8;
 }
 
-@media screen and (max-width: 1281px) {
+/* @media screen and (max-width: 1281px) {
   .container {
     width: 90% !important;
     margin: 0 auto;
+  }
+} */
+
+@media screen and (max-width: 440px) {
+  section {
+    margin-bottom: 80px !important;
+  }
+  .container {
+    width: 90% !important;
+    margin: 0 auto;
+  }
+  .full-width_banner {
+    flex-direction: column;
+    padding: 30px;
+    background-image: url(./assest/Bg-img/baner_\ mobie_bg.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    margin-bottom: 80px;
+  }
+
+  .section_info {
+    flex-direction: column;
+    text-align: center;
+  }
+  .section_title {
+    font-size: 2.8rem;
+    margin-bottom: 10px;
+  }
+  .section_info_description {
+    max-width: 100%;
+    font-size: 1.4rem;
+    font-weight: 200;
+    margin-bottom: 50px;
+  }
+
+  .section_info_with_button {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .section_info_with_button_title_wrapper {
+    width: 100%;
+  }
+  .section_info_with_button_title {
+    font-size: 2.8rem;
+    margin-bottom: 10px;
+  }
+  .section_info_with_button_introduction {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    font-weight: 200;
+  }
+  .section_info_buttons_wrapper {
+    width: 300px;
+    align-items: center;
+    justify-content: center;
+  }
+  .section_info_buttons {
+    padding: 12px;
+  }
+  .section_info_buttons button {
+    font-size: 1.4rem;
+    text-wrap: nowrap;
+    padding: 10px 16px;
+    line-height: 100% !important;
+    min-height: 40px;
   }
 }

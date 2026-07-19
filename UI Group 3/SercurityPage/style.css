@@ -72,7 +72,7 @@
   background-color: transparent;
 }
 
-.security_card { 
+.security_card {
   background-image: url(../assest/Bg-img/SecurityBackground\ Image.png);
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -96,6 +96,7 @@
   font-size: 2.4rem;
   line-height: 150%;
   font-weight: 300;
+  background-color: transparent;
 }
 
 .security_card_text {
@@ -104,4 +105,77 @@
   line-height: 150%;
   color: var(--grey-70);
   background-color: transparent;
+}
+
+@media screen and (max-width: 440px) {
+  .security_banner {
+    padding: 14px;
+    height: 516px;
+  }
+
+  .security_banner_wrapper {
+    flex-direction: column-reverse;
+  }
+
+  .security_banner_img {
+    width: 100%;
+    min-height: 250px;
+  }
+
+  .security_banner_text {
+    position: relative;
+    display: flex;
+    bottom: -100%;
+    width: 100%;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    padding: 24px;
+    border-radius: 20px;
+    transform: translateY(-10%);
+  }
+
+  .security_banner_title {
+    font-size: 2.8rem;
+    margin-bottom: 14px;
+  }
+
+  .security_banner_content {
+    font-size: 14px;
+  }
+
+  .security_content {
+    background-image: none;
+    padding: 0;
+  }
+
+  .security_cards {
+    gap: 20px;
+    position: relative;
+  }
+  .security_cards_wrapper {
+    padding: 0;
+    width: 100%;
+    position: relative;
+  }
+  .security_card {
+    width: 100%;
+    padding: 24px;
+  }
+  .security_card_title {
+    font-size: 1.8rem;
+  }
+  .security_card_title_wrapper img {
+    width: 68px;
+    height: auto;
+  }
+  .security_card_title_wrapper {
+    margin-bottom: 18px;
+  }
+  .security_card_text {
+    font-size: 1.4rem;
+  }
+  .security_content {
+    margin: 0;
+  }
 }

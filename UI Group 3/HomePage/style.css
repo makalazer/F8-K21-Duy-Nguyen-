@@ -346,13 +346,13 @@
   gap: 30px;
   background-image: url(../assest/Bg-img/Sub\ Container_1.png);
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: 100% 100%;
 }
 
 .use-case_cards-bg_right {
   background-image: url(../assest/Bg-img/Sub\ Container_2.png);
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: 100% 100%;
 }
 
 /* TODO */
@@ -534,4 +534,198 @@
   background-color: inherit;
   font-weight: 100;
   color: var(--grey-70);
+}
+
+@media screen and (max-width: 440px) {
+  .banner_text_wrapper {
+    margin: 0;
+    text-align: center;
+  }
+
+  .banner_title {
+    font-size: 2.4rem;
+    margin-bottom: 14px;
+  }
+
+  .banner_content {
+    font-size: 1.4rem;
+    margin-bottom: 24px;
+  }
+
+  .banner {
+    flex-direction: column;
+    margin-top: 50px;
+  }
+  .left-banner {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 80px;
+  }
+  .banner_note {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+  .banner_note_content {
+    font-size: 12px;
+  }
+  .left-panel__title {
+    font-size: 2.8rem;
+    margin-bottom: 8px;
+  }
+  .left-banner__description {
+    font-size: 1.4rem;
+    font-weight: 200;
+    margin-bottom: 30px;
+  }
+
+  .right-banner {
+    width: 100%;
+    align-items: center;
+  }
+  .transaction_container {
+    margin: 0 auto;
+    width: 95%;
+    padding: 20px;
+  }
+  .transaction_label {
+    font-size: 1rem;
+  }
+  .transaction_pop-up {
+    padding: 10px;
+    border-radius: 6px;
+    top: -6%;
+    left: -6%;
+  }
+  .transaction_background {
+    top: -4%;
+    left: 54%;
+    width: 220px;
+    height: 200px;
+  }
+  .transaction_content p {
+    font-size: 0.9rem;
+  }
+  .client-name {
+    font-size: 1rem !important;
+  }
+  .transfer-amount {
+    font-size: 1.2rem !important;
+  }
+  .amount {
+    font-size: 1rem !important;
+  }
+  .pop-up_text {
+    font-size: 0.8rem !important;
+  }
+  .transaction_pop-up img {
+    width: 22px;
+    height: 22px;
+  }
+  .exchange_button {
+    padding: 8px 15px;
+    font-style: 9px;
+    min-height: 30px;
+  }
+  .supported-currency_wrap {
+    padding: 5px 5px 5px 12px;
+  }
+  .supported-currency_text {
+    font-size: 9px;
+    text-wrap: nowrap;
+    padding: 0;
+    margin-right: 5px;
+  }
+  .currency_wrap {
+    margin: 0;
+  }
+  .currency_wrap img {
+    height: 20px;
+  }
+  .product-card_wrap {
+    display: flex;
+    flex-direction: column;
+  }
+  .product_card {
+    width: 100%;
+    padding: 30px 0px;
+  }
+  .product_card:not(:last-child) {
+    border-bottom: 1px solid var(--grey-15);
+    border-right: none;
+  }
+  .product_card img {
+    width: 72px;
+    margin-bottom: 20px;
+  }
+  .product_card_title {
+    font-size: 2rem;
+    margin-bottom: 12px;
+  }
+  .product_card_description {
+    font-size: 1.4rem;
+  }
+  .use-case_wrapper {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 30px;
+  }
+  .use-case_cards {
+    width: 100%;
+    padding: 20px;
+    gap: 10px;
+  }
+  .use-case_card {
+    width: calc(50% - 5px);
+    padding: 20px;
+  }
+  .use-case_card img {
+    width: 64px;
+    height: auto;
+    margin-bottom: 14px;
+  }
+  .use-case_card-title {
+    font-size: 1.4rem;
+  }
+  .use-case_info {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    margin-bottom: 40px;
+  }
+  .use-case_info_title {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  .use-case_info-description {
+    font-size: 1.4rem;
+    margin-bottom: 50px;
+  }
+  .percent_cards {
+    flex-direction: column;
+    margin-bottom: 50px;
+    padding: 0 50px;
+  }
+  .percent_card:not(:last-child) {
+    margin: 0;
+    padding-bottom: 30px;
+    padding-right: 0;
+    border-right: none;
+    border-bottom: 3px dashed var(--grey-15);
+  }
+  .percent_card {
+    padding-top: 30px;
+  }
+
+  .use-case_info button {
+    background-color: var(--grey-11);
+    border: 1px solid var(--grey-15);
+    font-size: 1.4rem;
+  }
 }

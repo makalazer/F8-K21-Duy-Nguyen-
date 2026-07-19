@@ -26,6 +26,7 @@
   font-weight: 100;
   color: var(--grey-75);
   margin-bottom: 8rem;
+  background-color: transparent;
 }
 
 .login_form {
@@ -119,4 +120,59 @@
 
 .login_button_group img:not(:last-child) {
   margin-right: 2.4rem;
+}
+
+@media screen and (max-width: 440px) {
+  .login_wrapper {
+    background-image: url(../assest/Bg-img/login_bg_mobie.png);
+    width: 90%;
+    padding: 30px;
+    text-align: center;
+  }
+  .login_title {
+    font-size: 2.8rem;
+    margin-bottom: 10px;
+  }
+  .login_subtitle {
+    font-size: 1.4rem;
+    margin-bottom: 40px;
+  }
+  .input_wrapper {
+    gap: 20px;
+    flex-direction: column;
+    margin-bottom: 24px;
+  }
+  .input_wrapper input {
+    width: 100%;
+    padding: 16px;
+  }
+
+  .input_wrapper input::placeholder {
+    font-size: 1.6rem;
+  }
+
+  .show_pass_button {
+    bottom: 14px !important;
+    top: auto;
+  }
+  .forgot-pass_text {
+    margin-bottom: 24px;
+  }
+  .login_form button {
+    width: 100%;
+    margin-bottom: 24px;
+  }
+  .sso_wrapper {
+    width: 100%;
+    margin-bottom: 24px;
+  }
+  .login_button_group {
+    display: flex;
+    gap: 20px;
+  }
+  .login_button_group img {
+    margin: 0 !important;
+    width: 68px;
+    height: auto;
+  }
 }
