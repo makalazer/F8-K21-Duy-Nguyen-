@@ -1,0 +1,90 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server A",
+      "author": "Nguyen Van A",
+      "userId": 1
+    },
+    {
+      "id": 2,
+      "title": "json-server B",
+      "author": "Nguyen Van B",
+      "userId": 2
+    },
+    {
+      "id": 3,
+      "title": "json-server C",
+      "author": "Nguyen Van C",
+      "userId": 3
+    },
+    {
+      "id": 4,
+      "title": "json-server D",
+      "author": "Nguyen Van D",
+      "userId": 4
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "Nguyen Van A"
+    },
+    {
+      "id": 2,
+      "name": "Nguyen Van B"
+    },
+    {
+      "id": 3,
+      "name": "Nguyen Van C"
+    },
+    {
+      "id": 4,
+      "name": "Nguyen Van D"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "products": [
+    {
+      "id": 1,
+      "name": "mouse",
+      "price": 250000
+    },
+    {
+      "id": 2,
+      "name": "monitor",
+      "price": 3000000
+    },
+    {
+      "id": 3,
+      "name": "ram",
+      "price": 5000000
+    },
+    {
+      "id": 4,
+      "name": "VGA",
+      "price": 10000000,
+      "discount": 200000
+    },
+    {
+      "id": 5,
+      "name": "VGA Gigabyte",
+      "price": 20000000,
+      "discount": 300000
+    },
+    {
+      "id": 6,
+      "name": "VGA MSI",
+      "price": 30000000
+    }
+  ]
+}
