@@ -1,24 +1,25 @@
 {
-    "editor.formatOnSave": true,
-    "cSpell.words": [
-        "BƯỚC",
-        "chứa",
-        "đăng",
-        "đúng",
-        "được",
-        "dưới",
-        "gạch",
-        "hoặc",
-        "khoảng",
-        "Không",
-        "nhập",
-        "PHẢI",
-        "thêm",
-        "thiểu",
-        "tính",
-        "trắng",
-        "trống",
-        "từng",
-        "Viết"
-    ]
+  "editor.formatOnSave": true,
+  "cSpell.words": [
+    "BƯỚC",
+    "chứa",
+    "dạng",
+    "đăng",
+    "đúng",
+    "được",
+    "dưới",
+    "gạch",
+    "hoặc",
+    "khoảng",
+    "Không",
+    "nhập",
+    "PHẢI",
+    "thêm",
+    "thiểu",
+    "tính",
+    "trắng",
+    "trống",
+    "từng",
+    "Viết"
+  ]
 }
