@@ -1,0 +1,61 @@
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "PT Sans", sans-serif;
+}
+
+ul {
+    list-style: none;
+    font-size: 20px;
+}
+
+a {
+    text-decoration: none;
+}
+.theme_bg {
+    width: 100%;
+    background-image: url(./assest/banner-10.webp);
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 500px;
+    float: left;
+}
+
+.container {
+    width: 1280px;
+    margin: 0 auto;
+}
+
+.them_mark {
+    background: rgba(0, 0, 0, 0.6);
+    min-height: inherit;
+    float: left;
+    width: 100%;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+.navbar_list {
+    display: flex;
+    justify-content: space-around;
+    flex-grow: 1;
+}
+
+.navbar_item {
+    color: #fff;
+    padding: 10px;
+    font-weight: 700;
+}
+
+.navbar_item a {
+    color: inherit;
+}
+
+.sub-navbar_list {
+    display: none;
+}
