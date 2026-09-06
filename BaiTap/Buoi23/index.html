@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <script src="https://cdn.tailwindcss.com"></script>
+      <title>Buoi 23</title>
+</head>
+
+<body class="min-h-screen bg-slate-950 text-white">
+      <header class="border-b border-white/10">
+            <nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
+                  <a href="#" class="text-2xl font-bold tracking-tight text-cyan-400">Postly</a>
+                  <div class="flex items-center gap-3">
+                        <button id="loginButton"
+                              class="rounded-lg px-4 py-2 text-sm font-semibold text-slate-200 hover:bg-white/10">Login</button>
+                        <button id="signupButton"
+                              class="rounded-lg bg-cyan-400 px-4 py-2 text-sm font-semibold text-slate-950 hover:bg-cyan-300">Sign
+                              up</button>
+                  </div>
+            </nav>
+      </header>
+
+      <main>
+            <section class="mx-auto max-w-6xl px-6 py-24 text-center">
+                  <p class="mb-4 font-semibold uppercase tracking-[0.25em] text-cyan-400">Share what matters</p>
+                  <h1 class="mx-auto max-w-3xl text-5xl font-black leading-tight sm:text-6xl">Ideas worth reading, all
+                        in one place.</h1>
+                  <p class="mx-auto mt-6 max-w-2xl text-lg text-slate-400">Discover thoughtful stories and join a
+                        community built for sharing better ideas.</p>
+                  <div class="mt-8 flex justify-center gap-4">
+                        <button id="heroSignup"
+                              class="rounded-lg bg-cyan-400 px-6 py-3 font-semibold text-slate-950 hover:bg-cyan-300">Get
+                              started</button>
+                        <a href="#posts"
+                              class="rounded-lg border border-white/20 px-6 py-3 font-semibold hover:bg-white/10">Explore
+                              posts</a>
+                  </div>
+            </section>
+
+            <section id="posts" class="mx-auto hidden max-w-6xl px-6 pb-20">
+                  <div class="mb-8">
+                        <p class="font-semibold uppercase tracking-widest text-cyan-400">Your feed</p>
+                        <h2 class="mt-2 text-3xl font-bold">Latest posts</h2>
+                  </div>
+                  <div class="grid gap-6 md:grid-cols-3">
+                        <article class="rounded-2xl border border-white/10 bg-white/5 p-6"><span
+                                    class="text-sm text-cyan-400">Design</span>
+                              <h3 class="mt-4 text-xl font-bold">Building simple experiences</h3>
+                              <p class="mt-3 text-slate-400">Small details create products people love to use.</p>
+                        </article>
+                        <article class="rounded-2xl border border-white/10 bg-white/5 p-6"><span
+                                    class="text-sm text-cyan-400">Technology</span>
+                              <h3 class="mt-4 text-xl font-bold">Learn something every day</h3>
+                              <p class="mt-3 text-slate-400">A little curiosity can lead to meaningful change.</p>
+                        </article>
+                        <article class="rounded-2xl border border-white/10 bg-white/5 p-6"><span
+                                    class="text-sm text-cyan-400">Community</span>
+                              <h3 class="mt-4 text-xl font-bold">Connect through stories</h3>
+                              <p class="mt-3 text-slate-400">The best conversations start with a shared idea.</p>
+                        </article>
+                  </div>
+            </section>
+      </main>
+
+      <div id="modal" class="fixed inset-0 hidden items-center justify-center bg-slate-950/80 px-6">
+            <form action="" id="login_form">
+
+                  <div class="w-full max-w-md rounded-2xl border border-white/10 bg-slate-900 p-8 shadow-2xl">
+                        <h2 id="modalTitle" class="text-2xl font-bold">Welcome back</h2>
+                        <p class="mt-2 text-slate-400">Enter your details to continue.</p>
+                        <input type="email" placeholder="Email address"
+                              class="mt-6 w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 outline-none focus:border-cyan-400">
+                        <input type="password" placeholder="Password"
+                              class="mt-3 w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 outline-none focus:border-cyan-400">
+                        <button id="continueButton"
+                              class="mt-5 w-full rounded-lg bg-cyan-400 py-3 font-semibold text-slate-950 hover:bg-cyan-300">Continue</button>
+                        <button id="closeButton"
+                              class="mt-4 w-full text-sm text-slate-400 hover:text-white">Cancel</button>
+                  </div>
+            </form>
+      </div>
+</body>
+<script src="./index.js"></script>
+
+</html>
