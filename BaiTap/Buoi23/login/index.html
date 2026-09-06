@@ -11,22 +11,25 @@
       <main class="w-full max-w-md rounded-2xl bg-white p-9 shadow-[0_18px_45px_#1e40af26] m-auto mt-[100px]">
             <h1 class="mb-2 text-center text-3xl font-bold">Welcome back</h1>
             <p class="mb-7 text-center text-slate-500">Sign in to your account</p>
-            <form action="#" method="post">
-                  <label class="mb-2 mt-4 block font-semibold" for="email">Email address</label>
+            <form action="#" id="login_form">
+                  <label class="mb-2 mt-4 block font-semibold" for="email">Username</label>
                   <input class="w-full rounded-lg border border-slate-300 px-3.5 py-3 text-[15px] outline-none focus:border-transparent focus:ring-2 focus:ring-indigo-500"
-                        id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email"
+                        id="username" name="username" type="username" placeholder="Username" autocomplete='username'
                         required>
                   <label class="mb-2 mt-4 block font-semibold" for="password">Password</label>
                   <input class="w-full rounded-lg border border-slate-300 px-3.5 py-3 text-[15px] outline-none focus:border-transparent focus:ring-2 focus:ring-indigo-500"
                         id="password" name="password" type="password" placeholder="Enter your password"
                         autocomplete="current-password" required>
-                  <button
+                  <p class="w-full mt-[16px] text-red-500 font-medium hidden" id="error-msg">Wrong username or password
+                  </p>
+                  <button id="signin_btn"
                         class="w-full rounded-lg bg-indigo-600 px-3 py-3 text-base font-semibold text-white hover:bg-indigo-700 mt-[40px]"
                         type="submit">Sign in</button>
             </form>
-            <p class="mt-6 text-center text-sm text-slate-500">Don't have an account? <a
-                        class="text-indigo-600 hover:underline" href="#">Sign up</a></p>
       </main>
 </body>
+<script src="./index.js" type="module"></script>
+<script type="module" src="../config.js"></script>
+<script type="module" src="../util.js"></script>
 
 </html>
