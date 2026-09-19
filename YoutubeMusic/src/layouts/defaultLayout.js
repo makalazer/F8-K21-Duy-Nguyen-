@@ -25,6 +25,7 @@ const renderDefaultLayout = () => {
     //add main content
     const main = document.createElement("main");
     main.id = "main";
+    main.className = "";
     app.append(main);
 };
 

@@ -17,4 +17,14 @@ const getQuickPickList = async () => {
         console.dir(err);
     }
 };
-export { getMoodList, getQuickPickList };
+
+const getPlaylistDetail = async (slug) => {
+    try {
+        const response = await instance.get(`/playlists/details/${slug}`);
+        return response.data;
+    } catch (err) {
+        console.dir(err);
+    }
+};
+
+export { getMoodList, getQuickPickList, getPlaylistDetail };
