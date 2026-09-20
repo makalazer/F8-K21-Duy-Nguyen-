@@ -1,10 +1,7 @@
 import { getHeaderHTML, initHeader } from "../../components/header";
 import { renderDefaultLayout } from "../../layouts/defaultLayout";
 import { instance } from "../../libs/axios";
-import {
-    getMoodList,
-    getQuickPickList,
-} from "../../services/getHomepageCategories";
+import { getMoodList, getQuickPickList } from "../../services/service";
 
 const init = async () => {
     renderDefaultLayout();
