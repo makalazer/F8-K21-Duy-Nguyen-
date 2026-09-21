@@ -42,7 +42,7 @@ const init = async (initData) => {
     };
     thumbnailEl.innerHTML = `
       <div class="w-full  shrink-0 text-center flex justify-start flex-col sticky top-20 ">
-            <img src="${playListData.thumbnails}" alt="${playListData.title}" class="rounded-3xl aspect-square object-cover w-4/5 mx-auto">
+            <img src="${playListData.thumbnails}" alt="${playListData.title}" id="album-thumbnail" class="rounded-3xl aspect-square object-cover w-4/5 mx-auto">
             <h1 class="font-bold text-3xl mt-4">${playListData.title}</h1>
             <p class="text-gray-400 mt-3">${playListData.artists}</p>
             <p class="text-gray-400 mt-2">${playListData.description}</p>
@@ -58,6 +58,14 @@ const init = async (initData) => {
     listSongsEl.addEventListener("click", (e) => {
         const songItem = e.target.closest(".song-item");
         if (!songItem) return;
+        console.log(songItem);
+        songItem.classList.add("bg-white/10");
+        if (prevSongIndex) {
+            const prevSongEl = document.querySelector(
+                `[data-id="${prevSongIndex}"]`,
+            );
+            prevSongEl.classList.remove("bg-white/10");
+        }
         const song = listSongs[songItem.dataset.id];
 
         if (song) {
@@ -74,7 +82,7 @@ const init = async (initData) => {
                   </div>
 
                   <!-- Player -->
-                  <audio controls id="audio" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3" class=""
+                  <audio controls  id="audio" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3" class="hidden"
                         type="audio/mpeg">
                   </audio>
                   <div class="js-player flex items-center justify-between sm:px-3 md:px-4 py-2 min-h-16">
@@ -82,14 +90,14 @@ const init = async (initData) => {
                         <!-- Left controls -->
                         <div class="player-act flex items-center lg:gap-3">
                               <button id="player-prev-btn"
-                                    class="hidden player-act md:flex p-3 text-sm text-white hover:cursor-pointer hover:bg-white/20 font-medium rounded-full transition">
+                                    class="hidden player-act md:flex p-3 text-sm text-white hover:cursor-pointer hover:bg-white/20 font-medium rounded-lg transition">
                                     <i class="fa-solid fa-backward-step text-xl"></i>
                               </button>
-                              <button id="player-play-btn" class="player-act act-btn">
+                              <button id="player-play-btn" class="player-act act-btn hover:bg-white/20 p-3 rounded-lg ">
                                      <i class="fa-solid fa-play text-3xl" id="pause-play_icon"></i>
                               </button>
                               <button id="player-next-btn"
-                                    class="hidden player-act sm:flex p-3 text-sm text-white hover:cursor-pointer hover:bg-white/20 font-medium rounded-full transition">
+                                    class="hidden player-act sm:flex p-3 text-sm text-white hover:cursor-pointer hover:bg-white/20 font-medium rounded-lg transition">
                                     <i class="fa-solid fa-forward-step text-xl"></i>
                               </button>
 
@@ -112,7 +120,7 @@ const init = async (initData) => {
                                           <div id="player-artist" class="text-sm text-gray-400 truncate">Không rõ nghệ
                                                 sĩ</div>
                                     </div>
-
+                                    <!-- TODO
                                     <div class="hidden md:flex items-center gap-2">
                                           <button
                                                 class="player-act p-2 rounded-full hover:bg-gray-700 cursor-pointer"><i
@@ -121,7 +129,7 @@ const init = async (initData) => {
                                                 class="player-act p-2 rounded-full hover:bg-gray-700 cursor-pointer"><i
                                                       class="fa-regular fa-thumbs-up text-lg md:text-xl"></i></button>
                                     </div>
-
+                                    -->
                                     <div class="hidden sm:flex relative group">
                                           <button id="mobile-options-btn"
                                                 class="player-act p-2 rounded-full hover:bg-gray-700 cursor-pointer">
@@ -159,10 +167,10 @@ const init = async (initData) => {
                               </div>
 
                               <div class="hidden md:flex items-center gap-2 md:gap-3">
-                                    <button id="player-repeat-btn" class="player-act act-btn">
-                                          <i class="fa-solid fa-repeat text-lg md:text-xl"></i>
+                                    <button id="player-repeat-btn" class="player-act act-btn hover:opacity-8 ">
+                                          <i class="fa-solid fa-repeat text-lg md:text-xl "></i>
                                     </button>
-                                    <button id="player-shuffle-btn" class="player-act act-btn">
+                                    <button id="player-shuffle-btn" class="player-act act-btn hover:opacity-8">
                                           <i class="fa-solid fa-shuffle text-lg md:text-xl"></i>
                                     </button>
                               </div>
@@ -195,25 +203,33 @@ const init = async (initData) => {
     const audio = document.querySelector("audio");
     const progressBar = document.querySelector("#player-progress-bar");
     const playerThumbnail = document.querySelector("#player-thumbnail");
+    const albumThumbnailEl = document.querySelector("#album-thumbnail");
     const playerTille = document.querySelector("#player-title");
+    const playerArtistEl = document.querySelector("#player-artist");
     const currentTimeEl = document.querySelector("#player-current");
     const durationEl = document.querySelector("#player-duration");
     const playBtn = document.querySelector("#player-play-btn");
+    const playerRepeatBtn = document.querySelector("#player-repeat-btn");
     const play_pause_icon = document.querySelector("#pause-play_icon");
     const prevBtn = document.querySelector("#player-prev-btn");
     const nextBtn = document.querySelector("#player-next-btn");
     const volumeSlider = document.querySelector("#player-volume-slider");
     let isPlaying = false;
+    let isRepeat = false;
     let currentSongIndex = 0;
+    let prevSongIndex = false;
 
     const loadCurrentSong = () => {
-        const { audioUrl, thumbnails, songIndex, title } =
+        const { audioUrl, thumbnails, songIndex, title, artists } =
             listSongs[currentSongIndex];
         audio.src = audioUrl;
         playerThumbnail.style.backgroundImage = `url(${thumbnails[0]})`;
+        albumThumbnailEl.src = thumbnails[0];
         playerTille.innerText = title;
         console.log(listSongs[currentSongIndex]);
+        playerArtistEl.innerText = artists?.map((artist) => artist).join("-");
         audio.play();
+        prevSongIndex = currentSongIndex;
     };
     const togglePlay = () => {
         if (isPlaying) {
@@ -234,14 +250,28 @@ const init = async (initData) => {
         play_pause_icon.classList.add("fa-pause");
         play_pause_icon.classList.remove("fa-play");
     };
+
+    audio.onloadeddata = () => {
+        progressBar.value = 0;
+        durationEl.innerText = formatSeconds(audio.duration);
+        updateTimmer();
+    };
+
+    audio.onended = () => {
+        if (isRepeat) {
+            audio.play();
+        } else {
+            nextSong();
+        }
+    };
+
+    progressBar.oninput = (e) => {
+        audio.currentTime = (progressBar.value * audio.duration) / 100;
+    };
     const updateTimmer = () => {
         setInterval(() => {
             currentTimeEl.innerHTML = formatSeconds(audio.currentTime);
         }, 1000);
-    };
-    audio.onloadeddata = () => {
-        durationEl.innerText = formatSeconds(audio.duration);
-        updateTimmer();
     };
 
     playBtn.onclick = () => {
@@ -250,7 +280,7 @@ const init = async (initData) => {
 
     const nextSong = () => {
         currentSongIndex++;
-        if (currentSongIndex > listSongs.length) {
+        if (currentSongIndex > listSongs.length - 1) {
             currentSongIndex = 0;
         }
         loadCurrentSong();
@@ -270,6 +300,11 @@ const init = async (initData) => {
 
     prevBtn.onclick = () => {
         prevSong();
+    };
+
+    playerRepeatBtn.onclick = () => {
+        playerRepeatBtn.classList.toggle("text-red-500");
+        isRepeat = !isRepeat;
     };
 };
 export { init };
