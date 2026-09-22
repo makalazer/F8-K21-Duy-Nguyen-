@@ -1,7 +1,14 @@
+const renderHeader = () => {
+    const header = document.createElement("header");
+    header.id = "header";
+    app.append(header);
+    const headerEl = document.querySelector("#header");
+    headerEl.outerHTML = getHeaderHTML();
+};
 const getHeaderHTML = () => {
     return `
     <header class="flex h-16 items-center gap-4 border-b border-zinc-800 bg-zinc-950 px-12 text-white">
-      <a href="#" class="flex shrink-0 items-center gap-2" aria-label="YouTube Music">
+      <a href="/" class="flex shrink-0 items-center gap-2" aria-label="YouTube Music">
         <span class="ml-12 flex h-9 w-9 items-center justify-center rounded-full bg-red-600">
           <svg class="ml-0.5 h-5 w-5 fill-white" viewBox="0 0 24 24" aria-hidden="true">
             <path
@@ -21,8 +28,8 @@ const getHeaderHTML = () => {
       <nav class="ml-auto flex items-center gap-3" aria-label="Điều hướng tài khoản">
         <button class="rounded-full p-2 text-zinc-300 hover:bg-zinc-800 hover:text-white" aria-label="Cài đặt">⚙</button>
         <button class="rounded-full p-2 text-zinc-300 hover:bg-zinc-800 hover:text-white" aria-label="Tải lên">↥</button>
-        <button header-login-button class="rounded-md border border-zinc-700 px-4 py-2 text-sm font-medium text-white hover:bg-zinc-800">Đăng
-          nhập</button>
+        <a href="/login" class="rounded-md border border-zinc-700 px-4 py-2 text-sm font-medium text-white hover:bg-zinc-800">Đăng
+          nhập</a>
       </nav>
     </header>
   `;
@@ -32,16 +39,12 @@ const initHeader = () => {
     const menuToggle = document.getElementById("menu-toggle");
     const sidebar = document.getElementById("sidebar");
     const sidebarClose = document.getElementById("sidebar-close");
-    const loginBtn = document.querySelector("[header-login-button]");
     function toggleSidebar(open) {
         sidebar.classList.toggle("-translate-x-full", !open);
     }
-    loginBtn.addEventListener("click", () => {
-        console.log("login");
-        window.location.href = "./login";
-    });
+
     menuToggle.addEventListener("click", () => toggleSidebar(true));
     sidebarClose.addEventListener("click", () => toggleSidebar(false));
 };
 
-export { getHeaderHTML, initHeader };
+export { renderHeader, initHeader };

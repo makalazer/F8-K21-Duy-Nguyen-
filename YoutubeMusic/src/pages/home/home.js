@@ -1,4 +1,4 @@
-import { getHeaderHTML, initHeader } from "../../components/header";
+import { initHeader } from "../../components/header";
 import { renderListCard } from "../../components/listCard";
 import { renderQuickPick } from "../../components/quickpick";
 import { renderDefaultLayout } from "../../layouts/defaultLayout";
@@ -46,7 +46,6 @@ const init = async () => {
     `;
 
     const quickPickList = await getQuickPickList();
-    
 
     renderQuickPick({ listAlbum: quickPickList });
 

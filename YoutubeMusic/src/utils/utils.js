@@ -1,4 +1,4 @@
-export const formatSeconds = (totalSeconds) => {
+const formatSeconds = (totalSeconds) => {
     if (!totalSeconds) return totalSeconds;
     const minutes = Math.floor(totalSeconds / 60);
     const seconds = Math.round(totalSeconds % 60);
@@ -9,7 +9,7 @@ export const formatSeconds = (totalSeconds) => {
     return `${paddedMinutes}:${paddedSeconds}`;
 };
 
-export const formatSecondsToHHMM = (totalSeconds) => {
+const formatSecondsToHHMM = (totalSeconds) => {
     const hours = Math.floor(totalSeconds / 3600);
     const minutes = Math.floor((totalSeconds % 3600) / 60);
 
@@ -18,3 +18,15 @@ export const formatSecondsToHHMM = (totalSeconds) => {
 
     return hours > 0 ? `${hh} giờ ${mm} phút` : `${mm} phút`;
 };
+
+const saveToken = (token) => {
+    localStorage.setItem("access_token", token.access_token);
+    localStorage.setItem("refresh_token", token.refresh_token);
+};
+
+const getToken = () => {
+    const access_token = localStorage.getItem("access_token");
+    const refresh_token = localStorage.getItem("refresh_token");
+    return { access_token, refresh_token };
+};
+export { formatSeconds, formatSecondsToHHMM, saveToken, getToken };

@@ -1,4 +1,4 @@
-import { getHeaderHTML, initHeader } from "../components/header";
+import { initHeader, renderHeader } from "../components/header";
 import { getSidebarHTML } from "../components/sidebar";
 
 const renderDefaultLayout = () => {
@@ -7,11 +7,12 @@ const renderDefaultLayout = () => {
     app.className = "bg-[#0f0f0f] text-white";
 
     //create header
-    const header = document.createElement("header");
-    header.id = "header";
-    app.append(header);
-    const headerEl = document.querySelector("#header");
-    headerEl.outerHTML = getHeaderHTML();
+    // const header = document.createElement("header");
+    // header.id = "header";
+    // app.append(header);
+    // const headerEl = document.querySelector("#header");
+    // headerEl.outerHTML = getHeaderHTML();
+    renderHeader();
 
     //create sidebar
     const sidebar = document.createElement("aside");
