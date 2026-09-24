@@ -1,5 +1,5 @@
 import { renderHeader } from "../../components/header";
-import { postLogin } from "../../services/service";
+import { postLogin } from "../../services/auth";
 
 const init = () => {
     const app = document.querySelector("#app");

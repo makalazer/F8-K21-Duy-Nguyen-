@@ -1,5 +1,5 @@
 import { renderHeader } from "../../components/header";
-import { postRegister } from "../../services/service";
+import { postRegister } from "../../services/auth";
 
 const init = async () => {
     const app = document.querySelector("#app");
@@ -82,7 +82,6 @@ const init = async () => {
         const errorMessageField = document.querySelector(
             `#field-${fieldName} .error-msg`,
         );
-        console.log(errorMessageField);
         errorMessageField.innerHTML = message;
         errorMessageField.classList.remove("hidden");
     }
@@ -98,7 +97,6 @@ const init = async () => {
 
     function validateUsername() {
         const value = document.querySelector("#register-name").value.trim();
-        console.log(value);
         const REGEX_USERNAME = /^[a-zA-Z0-9_]{4,16}$/;
 
         if (value === "") {
@@ -143,7 +141,7 @@ const init = async () => {
             showError("register-password", "Không được để trống");
             return false;
         }
-        if (value.length < 8) {
+        if (value.length < 6) {
             showError("register-password", "Mật khẩu tối thiểu 6 ký tự ");
             return false;
         }
@@ -169,7 +167,7 @@ const init = async () => {
             return false;
         }
         if (valueConfirm !== valuePassword) {
-            showError("register-confirm-password", "Mật khẩu k khớp");
+            showError("register-confirm-password", "Mật khẩu không khớp");
             return false;
         }
         showSuccess("register-confirm-password");
@@ -210,8 +208,8 @@ const init = async () => {
                 password: password,
                 confirmPassword: confirmPassword,
             };
-            // const registerRespone = await postRegister(registerData);
-            const registerRespone = true;
+            const registerRespone = await postRegister(registerData);
+            console.log(registerRespone);
             if (registerRespone) {
                 showRegisterToast();
                 setTimeout(() => {

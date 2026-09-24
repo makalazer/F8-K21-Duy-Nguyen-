@@ -29,4 +29,10 @@ const getToken = () => {
     const refresh_token = localStorage.getItem("refresh_token");
     return { access_token, refresh_token };
 };
-export { formatSeconds, formatSecondsToHHMM, saveToken, getToken };
+
+const deleteToken = () => {
+    localStorage.removeItem("access_token");
+    localStorage.removeItem("refresh_token");
+};
+
+export { formatSeconds, formatSecondsToHHMM, saveToken, getToken, deleteToken };

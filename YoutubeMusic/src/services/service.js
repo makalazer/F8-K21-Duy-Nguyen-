@@ -1,5 +1,5 @@
 import { instance } from "../libs/axios";
-import { saveToken } from "../utils/utils";
+import { deleteToken, getToken, saveToken } from "../utils/utils";
 
 const getMoodList = async () => {
     try {
@@ -78,31 +78,6 @@ const getPlaylistByCountry = async (params) => {
     }
 };
 
-const postRegister = async (data) => {
-    try {
-        const response = await instance.post("/auth/register", data);
-        if (response.status === 200) {
-            return true;
-        }
-    } catch (err) {
-        console.dir(err);
-    }
-};
-
-const postLogin = async (data) => {
-    try {
-        const response = await instance.post("/auth/login", data);
-        if (response.status === 200) {
-            saveToken(response.data);
-            return response.data;
-        } else {
-            return false;
-        }
-    } catch (err) {
-        console.dir(err);
-    }
-};
-
 export {
     getMoodList,
     getQuickPickList,
@@ -110,6 +85,4 @@ export {
     getAlbumSuggetions,
     getTopHits,
     getPlaylistByCountry,
-    postRegister,
-    postLogin,
 };

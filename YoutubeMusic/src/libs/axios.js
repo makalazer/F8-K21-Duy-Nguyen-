@@ -1,42 +1,66 @@
 import axios from "axios";
 import { CONFIG } from "../../config";
+import { refreshToken } from "../services/auth";
 
 export const instance = axios.create({
     baseURL: CONFIG.BASE_URL,
     timeout: 10000,
 });
 
-// instance.interceptors.request.use(
-//     (config) => {
-//         const accessToken = getAccessToken();
-//         if (accessToken) {
-//             config.headers.Authorization = `Bearer ${accessToken}`;
-//         }
-//         config._accessToken = accessToken;
-//         return config;
-//     },
-//     (error) => {
-//         return Promise.reject(error);
-//     },
-// );
+instance.interceptors.request.use((config) => {
+    const token = localStorage.getItem("accessToken");
+    if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+});
 
-// instance.interceptors.response.use(
-//     (response) => {
-//         return response;
-//     },
-//     async (error) => {
-//         const originalRequest = error.config;
-//         const isUnauthorized = error.response?.status === 401;
+let isRefreshing = false;
+let failedQueue = [];
 
-//         if (isUnauthorized && originalRequest) {
-//             const newToken = await refreshAccessToken(
-//                 originalRequest._accessToken,
-//             );
+const processQueue = (error, token = null) => {
+    failedQueue.forEach((prom) => {
+        if (error) {
+            prom.reject(error);
+        } else {
+            prom.resolve(token);
+        }
+    });
+    failedQueue = [];
+};
 
-//             if (newToken) {
-//                 return api(originalRequest);
-//             }
-//         }
-//         return Promise.reject(error);
-//     },
-// );
+instance.interceptors.response.use(
+    (response) => response,
+    async (error) => {
+        const originalRequest = error.config;
+
+        if (error.response?.status === 401 && !originalRequest._retry) {
+            if (isRefreshing) {
+                return new Promise((resolve, reject) => {
+                    failedQueue.push({ resolve, reject });
+                }).then((token) => {
+                    originalRequest.headers.Authorization = `Bearer ${token}`;
+                    return instance(originalRequest);
+                });
+            }
+
+            originalRequest._retry = true;
+            isRefreshing = true;
+
+            try {
+                const newAccessToken = await refreshToken();
+                processQueue(null, newAccessToken);
+
+                originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
+                return instance(originalRequest);
+            } catch (err) {
+                processQueue(err, null);
+                return Promise.reject(err);
+            } finally {
+                isRefreshing = false;
+            }
+        }
+
+        return Promise.reject(error);
+    },
+);
