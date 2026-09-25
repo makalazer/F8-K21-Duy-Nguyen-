@@ -6,6 +6,8 @@ import * as homePage from "../pages/home/home";
 import * as album from "../pages/album/album";
 import * as updateUserInfoPage from "../pages/updateUserInfo/updateUserInfo";
 import * as changePasswordPage from "../pages/changePassword/changePassword";
+import * as moodPage from "../pages/mood/mood";
+import * as explore from "../pages/explore/explore";
 
 export const router = new Navigo("/");
 
@@ -19,13 +21,17 @@ router.on("/change-password", changePasswordPage.init);
 
 router.on("/update-user-info", updateUserInfoPage.init);
 
-router.on("/moods/:mood", ({ data, params, queryString }) => {
-    console.log(data); // { id: 'xxx', action: 'save' }
-    console.log(params); // { m: "n", k: "z" }
-    console.log(queryString); // "m=n&k=z"
+router.on("/explore", explore.init);
+
+router.on("/moods/:slug", ({ data }) => {
+    moodPage.init({ data });
 });
 
-router.on("/playlists/details/:album", ({ data, params, queryString }) => {
+router.on("/albums/details/:slug", ({ data }) => {
+    album.init({ data });
+});
+
+router.on("/playlists/details/:slug", ({ data, params, queryString }) => {
     album.init({ data, params, queryString });
 });
 

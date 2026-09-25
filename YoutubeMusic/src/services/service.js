@@ -4,7 +4,40 @@ import { deleteToken, getToken, saveToken } from "../utils/utils";
 const getMoodList = async () => {
     try {
         const response = await instance.get("/moods");
-        return response.data.items;
+        if (response.status === 200) {
+            return response.data.items;
+        } else {
+            throw new Error("Failed to fetch mood list");
+            return [];
+        }
+    } catch (err) {
+        console.dir(err);
+    }
+};
+
+const getMoodandCategories = async () => {
+    try {
+        const response = await instance.get("/explore/meta");
+        if (response.status === 200) {
+            return response.data;
+        } else {
+            throw new Error("Failed to fetch mood list");
+            return [];
+        }
+    } catch (err) {
+        console.dir(err);
+    }
+};
+
+const getMooodDetail = async (slug) => {
+    try {
+        const response = await instance.get(`/moods/${slug}`);
+        if (response.status === 200) {
+            return response.data;
+        } else {
+            throw new Error("Failed to fetch mood detail");
+            return [];
+        }
     } catch (err) {
         console.dir(err);
     }
@@ -24,9 +57,32 @@ const getQuickPickList = async () => {
     }
 };
 
+const getNewestAlbums = async () => {
+    try {
+        const response = await instance.get("/explore/albums");
+        if (response.status === 200) {
+            return response.data.items;
+        } else {
+            throw new Error("Failed to fetch new albums");
+            return [];
+        }
+    } catch (err) {
+        console.dir(err);
+    }
+};
+
 const getPlaylistDetail = async (slug) => {
     try {
         const response = await instance.get(`/playlists/details/${slug}`);
+        return response.data;
+    } catch (err) {
+        console.dir(err);
+    }
+};
+
+const getAlbumsDetail = async (slug) => {
+    try {
+        const response = await instance.get(`/albums/details/${slug}`);
         return response.data;
     } catch (err) {
         console.dir(err);
@@ -80,8 +136,12 @@ const getPlaylistByCountry = async (params) => {
 
 export {
     getMoodList,
+    getNewestAlbums,
+    getMoodandCategories,
+    getMooodDetail,
     getQuickPickList,
     getPlaylistDetail,
+    getAlbumsDetail,
     getAlbumSuggetions,
     getTopHits,
     getPlaylistByCountry,

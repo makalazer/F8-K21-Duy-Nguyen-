@@ -6,8 +6,6 @@ import { deleteToken, getToken, saveToken } from "../utils/utils.js";
 export const refreshToken = async () => {
     try {
         const refreshToken = localStorage.getItem("refresh_token");
-        console.log("refreshToken", refreshToken);
-
         if (!refreshToken) {
             throw new Error("empty refresh token");
         }
@@ -15,15 +13,14 @@ export const refreshToken = async () => {
         const res = await instance.post(`/auth/refresh-token`, {
             refreshToken: refreshToken,
         });
-
+        console.log(res);
         saveToken(res.data);
         //TODO: reload page after refresh token
         window.location.reload();
         return accessToken;
     } catch (error) {
-        localStorage.removeItem("accessToken");
-        localStorage.removeItem("refreshToken");
-        throw error;
+        deleteToken();
+        console.dir(error);
     }
 };
 

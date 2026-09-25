@@ -1,6 +1,7 @@
 import axios from "axios";
 import { CONFIG } from "../../config";
 import { refreshToken } from "../services/auth";
+import { deleteToken } from "../utils/utils";
 
 export const instance = axios.create({
     baseURL: CONFIG.BASE_URL,
@@ -33,6 +34,12 @@ instance.interceptors.response.use(
     (response) => response,
     async (error) => {
         const originalRequest = error.config;
+        console.dir(error.response.data.message);
+
+        if (error?.response?.data?.message === "Invalid refresh token") {
+            deleteToken();
+            window.location.reload();
+        }
 
         if (error.response?.status === 401 && !originalRequest._retry) {
             if (isRefreshing) {
@@ -49,6 +56,7 @@ instance.interceptors.response.use(
 
             try {
                 const newAccessToken = await refreshToken();
+
                 processQueue(null, newAccessToken);
 
                 originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;

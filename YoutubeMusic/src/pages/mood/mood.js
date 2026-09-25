@@ -7,12 +7,15 @@ import { instance } from "../../libs/axios";
 import {
     getAlbumSuggetions,
     getMoodList,
+    getMooodDetail,
     getPlaylistByCountry,
     getQuickPickList,
     getTopHits,
 } from "../../services/service";
 
-const init = async () => {
+const init = async (initData) => {
+    const { data, params, queryString } = initData;
+    const slug = data.slug;
     renderDefaultLayout();
     const mainEl = document.querySelector("#main");
     mainEl.className =
@@ -29,9 +32,9 @@ const init = async () => {
         return moodList
             .map((item) => {
                 return `
-                <button id="${item._id}" "
-                    class="whitespace-nowrap rounded-lg bg-zinc-800 px-5 py-2 text-sm hover:bg-zinc-700">
-                    <a href="moods/${item.slug}">
+                <button id="mood-${item.slug}" "
+                    class="whitespace-nowrap font-medium rounded-lg bg-zinc-800 px-5 py-2 text-sm hover:bg-zinc-700">
+                    <a href="/moods/${item.slug}">
                         ${item.name}
                     </a>
                 </button>  
@@ -46,36 +49,24 @@ const init = async () => {
                   </div>
     `;
 
-    const quickPickList = await getQuickPickList();
+    //Active moodtag
+    document.querySelector(`#mood-${slug}`).classList.remove("bg-zinc-800");
+    document
+        .querySelector(`#mood-${slug}`)
+        .classList.add("bg-white", "text-black");
 
-    renderQuickPick({ listAlbum: quickPickList });
-
-    const albumSuggestionList = await getAlbumSuggetions();
-    renderListCard({
-        listAlbum: albumSuggestionList,
-        title: "Album gợi ý cho bạn",
-        listid: "albumSuggestionList",
-        endpoint: CONFIG.END_POINT.albums,
-    });
-
-    const topHitsList = await getTopHits();
-    renderListCard({
-        listAlbum: topHitsList,
-        title: "Today's Hits",
-        listid: "topHitsList",
-        endpoint: CONFIG.END_POINT.playlists,
-    });
-
-    const playlistVN = await getPlaylistByCountry({
-        countryCode: "VN",
-        limit: 12,
-    });
-
-    renderListCard({
-        listAlbum: playlistVN,
-        title: "Nhạc Việt Nam",
-        listid: "playlistVN",
-        endpoint: CONFIG.END_POINT.playlists,
-    });
+    const moodDetail = await getMooodDetail(slug);
+    console.log(moodDetail);
+    if (moodDetail) {
+        moodDetail.sections.forEach((section) => {
+            console.log(section);
+            renderListCard({
+                listAlbum: section.items,
+                title: section.title,
+                listid: section.id,
+                endpoint: CONFIG.END_POINT.playlists,
+            });
+        });
+    }
 };
 export { init };

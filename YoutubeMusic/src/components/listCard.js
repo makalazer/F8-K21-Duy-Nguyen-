@@ -1,5 +1,5 @@
 export const renderListCard = (data) => {
-    const { title, listAlbum, listid } = data;
+    const { title, listAlbum, listid, endpoint } = data;
     const mainEl = document.querySelector("#main");
     const listCard = document.createElement("section");
     listCard.id = listid;
@@ -9,10 +9,10 @@ export const renderListCard = (data) => {
         return listAlbum
             .map((album) => {
                 return `
-                  <a href="/albums/details/${album.slug}" class="w-40 lg:h-60 lg:w-[220px] cursor-pointer shrink-0 block group">
+                  <a href="/${endpoint}/details/${album.slug}" class="w-40 lg:h-60 lg:w-55 cursor-pointer shrink-0 block group">
                                     <div class="relative">
                                           <img src="${album.thumbnails[0]}"
-                                                class="rounded-xl w-full h-40 lg:h-[220px] object-cover mb-2">
+                                                class="rounded-xl w-full h-40 lg:h-55 object-cover mb-2">
 
                                           <div
                                                 class="absolute inset-0 bg-black/40 rounded-xl opacity-0 group-hover:opacity-100 transition duration-200">
@@ -25,7 +25,7 @@ export const renderListCard = (data) => {
                                           </div>
                                     </div>
                                     <h3 class="mb-2 text-white font-medium truncate">${album.title}</h3>
-                                    <p class="text-gray-400 text-sm truncate">{${album?.artists?.map((artist) => artist).join("-")}}</p>
+                                    <p class="text-gray-400 text-sm truncate">${album?.artists ? album?.artists?.map((artist) => artist).join("-") : ""}</p>
                   </a>
             `;
             })

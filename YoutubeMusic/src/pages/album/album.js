@@ -1,11 +1,29 @@
+import { CONFIG } from "../../../config";
 import { renderDefaultLayout } from "../../layouts/defaultLayout";
-import { getPlaylistDetail } from "../../services/service";
+import { getAlbumsDetail, getPlaylistDetail } from "../../services/service";
 import { formatSeconds, formatSecondsToHHMM } from "../../utils/utils";
 
 const init = async (initData) => {
     const { data, params, queryString } = initData;
-    const slug = data.album;
-    const playListData = await getPlaylistDetail(slug);
+    const slug = data.slug;
+    let playListData = [];
+    console.log(window.location.pathname);
+    const endPoint = window.location.pathname.split("/")[1];
+    console.log(endPoint);
+
+    switch (endPoint) {
+        case CONFIG.END_POINT.playlists: {
+            playListData = await getPlaylistDetail(slug);
+            break;
+        }
+        case CONFIG.END_POINT.albums: {
+            playListData = await getAlbumsDetail(slug);
+            break;
+        }
+        default: {
+            break;
+        }
+    }
 
     renderDefaultLayout();
 
@@ -40,12 +58,23 @@ const init = async (initData) => {
             })
             .join("");
     };
+    const thumbnailEl_artists = playListData.artists
+        ? `<p class="text-gray-400 mb-2">Các nghệ sĩ: ${playListData.artists?.join(" - ")}</p>`
+        : "";
+    const thumbnailEl_description = playListData.description
+        ? ` <p class="text-gray-400 mb-2">${playListData.description}</p>`
+        : "";
+    const thumbnailEl_popularity = playListData.popularity
+        ? ` <p class="text-gray-400 mb-2">${playListData.popularity} lượt nghe</p>`
+        : "";
+
     thumbnailEl.innerHTML = `
       <div class="w-full  shrink-0 text-center flex justify-start flex-col sticky top-20 ">
             <img src="${playListData.thumbnails}" alt="${playListData.title}" id="album-thumbnail" class="rounded-3xl aspect-square object-cover w-4/5 mx-auto">
-            <h1 class="font-bold text-3xl mt-4">${playListData.title}</h1>
-            <p class="text-gray-400 mt-3">${playListData.artists}</p>
-            <p class="text-gray-400 mt-2">${playListData.description}</p>
+            <h1 class="font-bold text-3xl mt-4 mb-4">${playListData.title}</h1>
+            ${thumbnailEl_artists}
+            ${thumbnailEl_description}
+            ${thumbnailEl_popularity}
             <p class="text-gray-400"> ${playListData.songCount} bài nhạc · ${formatSecondsToHHMM(playListData?.duration)}</p>
       </div>
     `;
@@ -58,7 +87,6 @@ const init = async (initData) => {
     listSongsEl.addEventListener("click", (e) => {
         const songItem = e.target.closest(".song-item");
         if (!songItem) return;
-        console.log(songItem);
         songItem.classList.add("bg-white/10");
         if (prevSongIndex) {
             const prevSongEl = document.querySelector(
