@@ -86,7 +86,6 @@ const init = async () => {
         const errorMessageField = document.querySelector(
             `#field-${fieldName} .error-msg`,
         );
-        console.log(errorMessageField);
         errorMessageField.innerHTML = message;
         errorMessageField.classList.remove("hidden");
     }
@@ -168,7 +167,6 @@ const init = async () => {
                 password: password,
                 confirmPassword: confirmPassword,
             };
-            console.log(changePasswordData);
             const changePasswordRespone =
                 await patchChangePassword(changePasswordData);
             if (changePasswordRespone) {

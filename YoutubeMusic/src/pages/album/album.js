@@ -7,9 +7,7 @@ const init = async (initData) => {
     const { data, params, queryString } = initData;
     const slug = data.slug;
     let playListData = [];
-    console.log(window.location.pathname);
     const endPoint = window.location.pathname.split("/")[1];
-    console.log(endPoint);
 
     switch (endPoint) {
         case CONFIG.END_POINT.playlists: {
@@ -29,7 +27,7 @@ const init = async (initData) => {
 
     const mainEl = document.querySelector("#main");
     mainEl.className =
-        "bg-[#0f0f0f] text-white relative mt-30 lg:ml-[calc(150px+5%)] lg:mr-10 pb-28";
+        "bg-transparent text-white relative mt-30 lg:ml-[calc(150px+5%)] lg:mr-10 pb-28";
 
     mainEl.innerHTML = `
       <section class="grid grid-cols-1 lg:grid-cols-2 gap-y-12 md:px-8 lg:px-0 gap-x-4">
@@ -254,7 +252,6 @@ const init = async (initData) => {
         playerThumbnail.style.backgroundImage = `url(${thumbnails[0]})`;
         albumThumbnailEl.src = thumbnails[0];
         playerTille.innerText = title;
-        console.log(listSongs[currentSongIndex]);
         playerArtistEl.innerText = artists?.map((artist) => artist).join("-");
         audio.play();
         prevSongIndex = currentSongIndex;
@@ -334,5 +331,7 @@ const init = async (initData) => {
         playerRepeatBtn.classList.toggle("text-red-500");
         isRepeat = !isRepeat;
     };
+
+    loadCurrentSong();
 };
 export { init };

@@ -13,7 +13,6 @@ export const refreshToken = async () => {
         const res = await instance.post(`/auth/refresh-token`, {
             refreshToken: refreshToken,
         });
-        console.log(res);
         saveToken(res.data);
         //TODO: reload page after refresh token
         window.location.reload();

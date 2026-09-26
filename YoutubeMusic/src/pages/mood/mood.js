@@ -19,7 +19,7 @@ const init = async (initData) => {
     renderDefaultLayout();
     const mainEl = document.querySelector("#main");
     mainEl.className =
-        "bg-[#0f0f0f] text-white mx-auto max-w-3/4 px-6 py-8 transition-all duration-300 md:ml-64 min-h-screen";
+        "bg-transparent text-white mx-auto max-w-3/4 px-6 py-8 transition-all duration-300   min-h-screen";
     const moodTag = document.createElement("section");
     moodTag.id = "mood_tag";
     moodTag.className = "mb-12";
@@ -56,10 +56,8 @@ const init = async (initData) => {
         .classList.add("bg-white", "text-black");
 
     const moodDetail = await getMooodDetail(slug);
-    console.log(moodDetail);
     if (moodDetail) {
         moodDetail.sections.forEach((section) => {
-            console.log(section);
             renderListCard({
                 listAlbum: section.items,
                 title: section.title,

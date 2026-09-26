@@ -209,7 +209,6 @@ const init = async () => {
                 confirmPassword: confirmPassword,
             };
             const registerRespone = await postRegister(registerData);
-            console.log(registerRespone);
             if (registerRespone) {
                 showRegisterToast();
                 setTimeout(() => {

@@ -29,6 +29,90 @@ const getMoodandCategories = async () => {
     }
 };
 
+const getCategories = async () => {
+    try {
+        const response = await instance.get("/categories");
+        if (response.status === 200) {
+            return response.data.items;
+        } else {
+            throw new Error("Failed to fetch mood list");
+            return [];
+        }
+    } catch (err) {
+        console.dir(err);
+    }
+};
+
+const getCategoriesDetail = async (slug) => {
+    try {
+        const response = await instance.get(`/categories/${slug}`);
+        if (response.status === 200) {
+            return response.data;
+        } else {
+            throw new Error("Failed to fetch mood list");
+            return [];
+        }
+    } catch (err) {
+        console.dir(err);
+    }
+};
+
+const getLineList = async () => {
+    try {
+        const response = await instance.get("/lines");
+        if (response.status === 200) {
+            return response.data.items;
+        } else {
+            throw new Error("Failed to fetch lines");
+            return [];
+        }
+    } catch (err) {
+        console.dir(err);
+    }
+};
+
+const getLinePlaylist = async (slug) => {
+    try {
+        const response = await instance.get(`/lines/${slug}/playlists`);
+        if (response.status === 200) {
+            return response.data.items;
+        } else {
+            throw new Error("Failed to fetch lines playlists");
+            return [];
+        }
+    } catch (err) {
+        console.dir(err);
+    }
+};
+
+const getLineAlbums = async (slug) => {
+    try {
+        const response = await instance.get(`/lines/${slug}/albums`);
+        if (response.status === 200) {
+            return response.data.items;
+        } else {
+            throw new Error("Failed to fetch lines albums");
+            return [];
+        }
+    } catch (err) {
+        console.dir(err);
+    }
+};
+
+const getLineSongs = async (slug) => {
+    try {
+        const response = await instance.get(`/lines/${slug}/songs`);
+        if (response.status === 200) {
+            return response.data.items;
+        } else {
+            throw new Error("Failed to fetch lines songs");
+            return [];
+        }
+    } catch (err) {
+        console.dir(err);
+    }
+};
+
 const getMooodDetail = async (slug) => {
     try {
         const response = await instance.get(`/moods/${slug}`);
@@ -136,8 +220,11 @@ const getPlaylistByCountry = async (params) => {
 
 export {
     getMoodList,
+    getCategories,
+    getCategoriesDetail,
     getNewestAlbums,
     getMoodandCategories,
+    getLineList,
     getMooodDetail,
     getQuickPickList,
     getPlaylistDetail,

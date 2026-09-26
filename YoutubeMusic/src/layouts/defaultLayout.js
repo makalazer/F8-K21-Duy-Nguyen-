@@ -4,14 +4,8 @@ import { getSidebarHTML } from "../components/sidebar";
 const renderDefaultLayout = () => {
     const app = document.querySelector("#app");
     app.innerHTML = "";
-    app.className = "bg-[#0f0f0f] text-white";
+    app.className = "bg-linear-to-r from-[#434343] to-[#000000] text-white";
 
-    //create header
-    // const header = document.createElement("header");
-    // header.id = "header";
-    // app.append(header);
-    // const headerEl = document.querySelector("#header");
-    // headerEl.outerHTML = getHeaderHTML();
     renderHeader();
 
     //create sidebar
