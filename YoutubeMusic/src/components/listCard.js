@@ -11,7 +11,7 @@ export const renderListCard = (data) => {
                 return `
                   <a href="/${endpoint}/details/${album.slug}" class="w-40 lg:h-60 lg:w-55 cursor-pointer shrink-0 block group">
                                     <div class="relative">
-                                          <img src="${album.thumbnails[0]}"
+                                          <img src="${album.thumbnails ? album.thumbnails[0] : album.thumb}"
                                                 class="rounded-xl w-full h-40 lg:h-55 object-cover mb-2">
 
                                           <div
@@ -24,7 +24,7 @@ export const renderListCard = (data) => {
                                                 <i class="fa-solid fa-play text-white text-4xl"></i>
                                           </div>
                                     </div>
-                                    <h3 class="mb-2 text-white font-medium truncate">${album.title}</h3>
+                                    <h3 class="mb-2 text-white font-medium truncate">${album.title ? album.title : album.name}</h3>
                                     <p class="text-gray-400 text-sm truncate">${album?.artists ? album?.artists?.map((artist) => artist).join("-") : ""}</p>
                   </a>
             `;

@@ -3,7 +3,7 @@ import { renderCategorieTagList } from "../../components/categorieTagList";
 import { renderExloreList } from "../../components/exploreList";
 import { renderListCard } from "../../components/listCard";
 import { renderDefaultLayout } from "../../layouts/defaultLayout";
-import { getMoodandCategories, getNewestAlbums } from "../../services/service";
+import { getMoodAndCategories, getNewestAlbums } from "../../services/service";
 
 const init = async (initData) => {
     renderDefaultLayout();
@@ -22,10 +22,14 @@ const init = async (initData) => {
         endpoint: CONFIG.END_POINT.albums,
     });
 
-    const requestMoodandCategories = await getMoodandCategories();
+    const requestMoodAndCategories = await getMoodAndCategories();
     const tagList = [
-        ...requestMoodandCategories.categories,
-        ...requestMoodandCategories.lines,
+        ...requestMoodAndCategories.categories.map((item) => {
+            return { type: CONFIG.END_POINT.categories, ...item };
+        }),
+        ...requestMoodAndCategories.lines.map((item) => {
+            return { type: CONFIG.END_POINT.lines, ...item };
+        }),
     ];
     renderCategorieTagList({ tagList, title: "Tâm trạng và thể loại" });
 };

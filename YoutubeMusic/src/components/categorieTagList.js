@@ -8,7 +8,7 @@ export const renderCategorieTagList = async (data) => {
     const tagListEl = tagList
         .map((item) => {
             return `
-             <a href="/categories/${item.slug}" id="${item.id}"  class="max-w-64 min-w-48 h-12 rounded-lg flex items-center text-white  text-sm font-semibold cursor-pointer bg-[#292929]">
+             <a href="/${item?.type}/${item.slug}" id="${item.id}"  class="max-w-64 min-w-48 h-12 rounded-lg flex items-center text-white  text-sm font-semibold cursor-pointer bg-[#292929]">
                         <div style="background-color: ${item.color};" class="h-full w-2 rounded-l-[999px] rounded-tr-[30px] rounded-br-[30px]"></div>
                         <div class="w-full flex-1 flex items-center justify-center px-2 truncate">
                         ${item.name}

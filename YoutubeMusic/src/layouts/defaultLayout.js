@@ -4,7 +4,8 @@ import { getSidebarHTML } from "../components/sidebar";
 const renderDefaultLayout = () => {
     const app = document.querySelector("#app");
     app.innerHTML = "";
-    app.className = "bg-linear-to-r from-[#434343] to-[#000000] text-white";
+    app.className =
+        "bg-linear-to-r from-[#434343] to-[#000000] text-white min-h-screen";
 
     renderHeader();
 

@@ -15,7 +15,7 @@ const getMoodList = async () => {
     }
 };
 
-const getMoodandCategories = async () => {
+const getMoodAndCategories = async () => {
     try {
         const response = await instance.get("/explore/meta");
         if (response.status === 200) {
@@ -113,7 +113,30 @@ const getLineSongs = async (slug) => {
     }
 };
 
-const getMooodDetail = async (slug) => {
+const getPersonalizedList = async (limit) => {
+    try {
+        const { access_token } = getToken();
+
+        const response = await instance.get(
+            `/home/personalized?limit=${limit}`,
+            {
+                headers: {
+                    Authorization: `Bearer ${access_token}`,
+                },
+            },
+        );
+        if (response.status === 200) {
+            return response.data.items;
+        } else {
+            throw new Error("Failed to fetch Personalized List");
+            return [];
+        }
+    } catch (err) {
+        console.dir(err);
+    }
+};
+
+const getMoodDetail = async (slug) => {
     try {
         const response = await instance.get(`/moods/${slug}`);
         if (response.status === 200) {
@@ -173,7 +196,7 @@ const getAlbumsDetail = async (slug) => {
     }
 };
 
-const getAlbumSuggetions = async () => {
+const getAlbumSuggestions = async () => {
     try {
         const response = await instance.get(`/home/albums-for-you`);
         if (response.status === 200) {
@@ -223,13 +246,17 @@ export {
     getCategories,
     getCategoriesDetail,
     getNewestAlbums,
-    getMoodandCategories,
+    getMoodAndCategories,
+    getPersonalizedList,
     getLineList,
-    getMooodDetail,
+    getLineSongs,
+    getLineAlbums,
+    getLinePlaylist,
+    getMoodDetail,
     getQuickPickList,
     getPlaylistDetail,
     getAlbumsDetail,
-    getAlbumSuggetions,
+    getAlbumSuggestions,
     getTopHits,
     getPlaylistByCountry,
 };

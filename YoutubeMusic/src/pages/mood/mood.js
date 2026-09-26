@@ -5,9 +5,9 @@ import { renderQuickPick } from "../../components/quickpick";
 import { renderDefaultLayout } from "../../layouts/defaultLayout";
 import { instance } from "../../libs/axios";
 import {
-    getAlbumSuggetions,
+    getAlbumSuggestions,
     getMoodList,
-    getMooodDetail,
+    getMoodDetail,
     getPlaylistByCountry,
     getQuickPickList,
     getTopHits,
@@ -28,7 +28,7 @@ const init = async (initData) => {
     const requestMoodList = await instance.get("/moods");
     const moodList = await getMoodList();
 
-    const getMooodListButton = (moodList) => {
+    const getMoodListButton = (moodList) => {
         return moodList
             .map((item) => {
                 return `
@@ -45,7 +45,7 @@ const init = async (initData) => {
     moodTag.innerHTML = `
                     <h2 class="mb-4 text-2xl font-bold">Khám phá âm nhạc</h2>
                     <div class="flex gap-3 overflow-x-auto pb-2">
-                        ${getMooodListButton(moodList)}
+                        ${getMoodListButton(moodList)}
                   </div>
     `;
 
@@ -55,7 +55,7 @@ const init = async (initData) => {
         .querySelector(`#mood-${slug}`)
         .classList.add("bg-white", "text-black");
 
-    const moodDetail = await getMooodDetail(slug);
+    const moodDetail = await getMoodDetail(slug);
     if (moodDetail) {
         moodDetail.sections.forEach((section) => {
             renderListCard({

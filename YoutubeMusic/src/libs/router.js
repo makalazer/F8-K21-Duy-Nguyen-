@@ -9,8 +9,9 @@ import * as changePasswordPage from "../pages/changePassword/changePassword";
 import * as moodPage from "../pages/mood/mood";
 import * as explore from "../pages/explore/explore";
 import * as newRelease from "../pages/newReleases/newReleases";
-import * as moodAndGenres from "../pages/moodsAndGenres/moodsAndGenres";
+import * as MoodAndGenres from "../pages/moodsAndGenres/moodsAndGenres";
 import * as catagories from "../pages/categories/categories";
+import * as lines from "../pages/lines/lines";
 
 export const router = new Navigo("/");
 
@@ -28,10 +29,14 @@ router.on("/explore", explore.init);
 
 router.on("/new-releases", newRelease.init);
 
-router.on("/moods-and-genres", moodAndGenres.init);
+router.on("/moods-and-genres", MoodAndGenres.init);
 
 router.on("/categories/:slug", ({ data }) => {
     catagories.init({ data });
+});
+
+router.on("/lines/:slug", ({ data }) => {
+    lines.init({ data });
 });
 
 router.on("/moods/:slug", ({ data }) => {

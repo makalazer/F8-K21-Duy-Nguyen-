@@ -4,9 +4,11 @@ import { renderListCard } from "../../components/listCard";
 import { renderQuickPick } from "../../components/quickpick";
 import { renderDefaultLayout } from "../../layouts/defaultLayout";
 import { instance } from "../../libs/axios";
+import { getUserInfo } from "../../services/auth";
 import {
-    getAlbumSuggetions,
+    getAlbumSuggestions,
     getMoodList,
+    getPersonalizedList,
     getPlaylistByCountry,
     getQuickPickList,
     getTopHits,
@@ -14,7 +16,29 @@ import {
 
 const init = async () => {
     renderDefaultLayout();
+    const welcomeTitle = document.createElement("h2");
+    welcomeTitle.className = "text-6xl font-bold mb-12";
+    const isLoggedIn = Boolean(localStorage.getItem("access_token"));
+    let userInfo = null;
     const mainEl = document.querySelector("#main");
+
+    // const personalizedList = [];
+    // personalizedList = await getPersonalizedList(12);
+    if (isLoggedIn) {
+        try {
+            userInfo = await getUserInfo();
+            welcomeTitle.innerText = `Chào mừng trở lại ${userInfo.name}`;
+        } catch (error) {
+            console.dir("fail to get user infomation", error);
+        }
+        mainEl.append(welcomeTitle);
+        //TODO: render nghe gần đây
+        // console.log(personalizedList);
+        // renderQuickPick({
+        //     title: "Nghe gần đây ",
+        //     listAlbum: personalizedList,
+        // });
+    }
     mainEl.className =
         "bg-transparent text-white mx-auto max-w-3/4 px-6 py-8 transition-all duration-300   min-h-screen";
     const moodTag = document.createElement("section");
@@ -25,7 +49,7 @@ const init = async () => {
     const requestMoodList = await instance.get("/moods");
     const moodList = await getMoodList();
 
-    const getMooodListButton = (moodList) => {
+    const getMoodListButton = (moodList) => {
         return moodList
             .map((item) => {
                 return `
@@ -42,15 +66,15 @@ const init = async () => {
     moodTag.innerHTML = `
                     <h2 class="mb-4 text-2xl font-bold">Khám phá âm nhạc</h2>
                     <div class="flex gap-3 overflow-x-auto pb-2">
-                        ${getMooodListButton(moodList)}
+                        ${getMoodListButton(moodList)}
                   </div>
     `;
 
     const quickPickList = await getQuickPickList();
 
-    renderQuickPick({ listAlbum: quickPickList });
+    renderQuickPick({ listAlbum: quickPickList, title: "Quick Pick" });
 
-    const albumSuggestionList = await getAlbumSuggetions();
+    const albumSuggestionList = await getAlbumSuggestions();
     renderListCard({
         listAlbum: albumSuggestionList,
         title: "Album gợi ý cho bạn",

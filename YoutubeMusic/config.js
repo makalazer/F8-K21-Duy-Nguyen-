@@ -3,5 +3,7 @@ export const CONFIG = {
     END_POINT: {
         playlists: "playlists",
         albums: "albums",
+        lines: "lines",
+        categories: "categories",
     },
 };

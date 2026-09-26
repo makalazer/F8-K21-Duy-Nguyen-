@@ -9,13 +9,19 @@ const init = async (initData) => {
     mainEl.className =
         "bg-transparent text-white mx-auto max-w-3/4 px-6 py-8 transition-all duration-300   min-h-screen";
 
-    const categorieList = await getCategories();
+    const categorieListResponse = await getCategories();
+    const categorieList = categorieListResponse.map((item) => {
+        return { type: "categories", ...item };
+    });
     renderCategorieTagList({
         tagList: categorieList,
         title: "Tâm trạng và khoảnh khắc",
     });
 
-    const lineList = await getLineList();
+    const lineListResponse = await getLineList();
+    const lineList = lineListResponse.map((item) => {
+        return { type: "lines", ...item };
+    });
     renderCategorieTagList({ tagList: lineList, title: "Dòng nhạc" });
 };
 export { init };
