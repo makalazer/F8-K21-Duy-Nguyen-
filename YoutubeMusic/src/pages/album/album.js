@@ -1,6 +1,10 @@
 import { CONFIG } from "../../../config";
 import { renderDefaultLayout } from "../../layouts/defaultLayout";
-import { getAlbumsDetail, getPlaylistDetail } from "../../services/service";
+import {
+    getAlbumsDetail,
+    getPlaylistDetail,
+    portEventPlay,
+} from "../../services/service";
 import { formatSeconds, formatSecondsToHHMM } from "../../utils/utils";
 
 const init = async (initData) => {
@@ -12,17 +16,20 @@ const init = async (initData) => {
     switch (endPoint) {
         case CONFIG.END_POINT.playlists: {
             playListData = await getPlaylistDetail(slug);
+            await portEventPlay({ playlistId: playListData?.id });
+
             break;
         }
         case CONFIG.END_POINT.albums: {
             playListData = await getAlbumsDetail(slug);
+            await portEventPlay({ albumId: playListData?.id });
             break;
         }
         default: {
             break;
         }
     }
-
+    console.log(playListData);
     renderDefaultLayout();
 
     const mainEl = document.querySelector("#main");

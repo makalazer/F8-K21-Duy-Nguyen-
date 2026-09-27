@@ -8,7 +8,6 @@ import { getUserInfo } from "../../services/auth";
 import {
     getAlbumSuggestions,
     getMoodList,
-    getPersonalizedList,
     getPlaylistByCountry,
     getQuickPickList,
     getTopHits,
@@ -22,8 +21,6 @@ const init = async () => {
     let userInfo = null;
     const mainEl = document.querySelector("#main");
 
-    // const personalizedList = [];
-    // personalizedList = await getPersonalizedList(12);
     if (isLoggedIn) {
         try {
             userInfo = await getUserInfo();
@@ -32,12 +29,6 @@ const init = async () => {
             console.dir("fail to get user infomation", error);
         }
         mainEl.append(welcomeTitle);
-        //TODO: render nghe gần đây
-        // console.log(personalizedList);
-        // renderQuickPick({
-        //     title: "Nghe gần đây ",
-        //     listAlbum: personalizedList,
-        // });
     }
     mainEl.className =
         "bg-transparent text-white mx-auto max-w-3/4 px-6 py-8 transition-all duration-300   min-h-screen";
@@ -69,7 +60,6 @@ const init = async () => {
                         ${getMoodListButton(moodList)}
                   </div>
     `;
-
     const quickPickList = await getQuickPickList();
 
     renderQuickPick({ listAlbum: quickPickList, title: "Quick Pick" });

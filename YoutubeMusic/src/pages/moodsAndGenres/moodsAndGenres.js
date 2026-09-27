@@ -1,3 +1,4 @@
+import _ from "lodash";
 import { CONFIG } from "../../../config";
 import { renderCategorieTagList } from "../../components/categorieTagList";
 import { renderDefaultLayout } from "../../layouts/defaultLayout";
@@ -11,7 +12,9 @@ const init = async (initData) => {
 
     const categorieListResponse = await getCategories();
     const categorieList = categorieListResponse.map((item) => {
-        return { type: "categories", ...item };
+        const newItem = _.cloneDeep(item);
+        newItem.type = "categories";
+        return newItem;
     });
     renderCategorieTagList({
         tagList: categorieList,
@@ -20,7 +23,9 @@ const init = async (initData) => {
 
     const lineListResponse = await getLineList();
     const lineList = lineListResponse.map((item) => {
-        return { type: "lines", ...item };
+        const newItem = _.cloneDeep(item);
+        newItem.type = "lines";
+        return newItem;
     });
     renderCategorieTagList({ tagList: lineList, title: "Dòng nhạc" });
 };

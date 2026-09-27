@@ -12,7 +12,7 @@ const getSidebarHTML = () => {
             <nav class="space-y-2" aria-label="Menu chính">
                   <a href="/" class="block rounded-md px-3 py-2 hover:bg-zinc-800">Trang chủ</a>
                   <a href="/explore" class="block rounded-md px-3 py-2 hover:bg-zinc-800">Khám phá</a>
-                  <a href="/" class="block rounded-md px-3 py-2 hover:bg-zinc-800">Bài hát yêu thích</a>
+                  <a href="/library" class="block rounded-md px-3 py-2 hover:bg-zinc-800">Bài hát yêu thích</a>
             </nav>
       </aside>
       <aside id="sidebar"
@@ -27,7 +27,7 @@ const getSidebarHTML = () => {
             <nav class="mt-8 space-y-2" aria-label="Menu chính">
                   <a href="/" class="block rounded-md px-3 py-2 hover:bg-zinc-800"><i class="fa-regular fa-house"></i></a>
                   <a href="/explore" class="block rounded-md px-3 py-2 hover:bg-zinc-800"><i class="fa-regular fa-compass"></i></a>
-                  <a href="/" class="block rounded-md px-3 py-2 hover:bg-zinc-800"><i class="fa-solid fa-heart"></i></a>
+                  <a href="/library" class="block rounded-md px-3 py-2 hover:bg-zinc-800"><i class="fa-solid fa-heart"></i></a>
             </nav>
       </aside>
       `;

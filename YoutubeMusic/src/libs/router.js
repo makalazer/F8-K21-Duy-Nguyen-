@@ -12,6 +12,7 @@ import * as newRelease from "../pages/newReleases/newReleases";
 import * as MoodAndGenres from "../pages/moodsAndGenres/moodsAndGenres";
 import * as catagories from "../pages/categories/categories";
 import * as lines from "../pages/lines/lines";
+import * as library from "../pages/library/library";
 
 export const router = new Navigo("/");
 
@@ -30,6 +31,8 @@ router.on("/explore", explore.init);
 router.on("/new-releases", newRelease.init);
 
 router.on("/moods-and-genres", MoodAndGenres.init);
+
+router.on("/library", library.init);
 
 router.on("/categories/:slug", ({ data }) => {
     catagories.init({ data });

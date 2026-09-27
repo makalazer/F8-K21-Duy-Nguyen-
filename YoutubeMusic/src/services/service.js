@@ -126,7 +126,7 @@ const getPersonalizedList = async (limit) => {
             },
         );
         if (response.status === 200) {
-            return response.data.items;
+            return response.data;
         } else {
             throw new Error("Failed to fetch Personalized List");
             return [];
@@ -241,6 +241,25 @@ const getPlaylistByCountry = async (params) => {
     }
 };
 
+const portEventPlay = async (data) => {
+    try {
+        const { access_token } = getToken();
+        const response = await instance.post(`/events/play`, data, {
+            headers: {
+                Authorization: `Bearer ${access_token}`,
+            },
+        });
+        if (response.status === 200) {
+            return response.data;
+        } else {
+            throw new Error("Failed to post events play");
+            return [];
+        }
+    } catch (err) {
+        console.dir(err);
+    }
+};
+
 export {
     getMoodList,
     getCategories,
@@ -259,4 +278,5 @@ export {
     getAlbumSuggestions,
     getTopHits,
     getPlaylistByCountry,
+    portEventPlay,
 };
