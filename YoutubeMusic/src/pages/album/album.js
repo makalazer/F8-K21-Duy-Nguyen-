@@ -299,6 +299,7 @@ const init = async (initData) => {
 
     progressBar.oninput = (e) => {
         audio.currentTime = (progressBar.value * audio.duration) / 100;
+        updateTimmer();
     };
     const updateTimmer = () => {
         setInterval(() => {
