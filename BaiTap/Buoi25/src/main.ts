@@ -13,7 +13,7 @@ const calculateBill = (energyUsed: number): number => {
     }
     return 50 * 1800 + 50 * 2000 + (energyUsed - 100) * 2500;
 };
-const isHighUsage = (energyUsed: number): Boolean => {
+const isHighUsage = (energyUsed: number): boolean => {
     if (energyUsed > 200) {
         return true;
     }
@@ -21,10 +21,12 @@ const isHighUsage = (energyUsed: number): Boolean => {
 };
 
 console.log(
-    `Chủ hộ : ${customer1.name} \n`,
-    `Số điện: ${customer1.energyUsed} \n`,
-    `Tiền điện: ${calculateBill(customer1.energyUsed)} đ \n`,
-    `Dùng nhiều điện: ${isHighUsage(customer1.energyUsed) ? "Có" : "Không"}`,
+    [
+        `Chủ hộ : ${customer1.name} `,
+        `Số điện: ${customer1.energyUsed} kWh `,
+        `Tiền điện: ${calculateBill(customer1.energyUsed)} đ `,
+        `Dùng nhiều điện: ${isHighUsage(customer1.energyUsed) ? "có" : "không"}`,
+    ].join("\n"),
 );
 
 //Bai 2
@@ -35,7 +37,7 @@ interface Student {
     phone?: string;
 }
 
-const GroupStudent: Student[] = [
+const groupStudent: Student[] = [
     { name: "Duy 1", age: 12, gpa: 6.0 },
     { name: "Duy 2", age: 12, gpa: 5.0, phone: "0912345678" },
     { name: "Duy 3", age: 12, gpa: 9.5, phone: "0912098799" },
@@ -43,7 +45,7 @@ const GroupStudent: Student[] = [
     { name: "Duy 5", age: 12, gpa: 8.0, phone: "0912345676" },
 ];
 
-const GroupStudent2: Student[] = [
+const groupStudent2: Student[] = [
     { name: "Duy 1", age: 12, gpa: 4.0 },
     { name: "Duy 2", age: 12, gpa: 3.0, phone: "0912345678" },
     { name: "Duy 3", age: 12, gpa: 0.5, phone: "0912098799" },
@@ -53,42 +55,46 @@ const GroupStudent2: Student[] = [
 
 const printStudent = (student: Student): void => {
     console.log(
-        `Họ tên: ${student.name} | Tuổi: ${student.age} | Điểm: ${student.gpa} | SĐT: ${student.phone ? student.phone : "chưa cập nhật"}`,
+        `Họ tên: ${student.name} | Tuổi: ${student.age} | Điểm: ${student.gpa} | SĐT: ${student.phone ? student.phone : "Chưa cập nhật"}`,
     );
 };
 
-GroupStudent.forEach((student) => {
+groupStudent.forEach((student) => {
     printStudent(student);
 });
 
-const getTopStudent = (GroupStudent: Student[]): Student => {
-    let result: Student = GroupStudent[0]!;
-    GroupStudent.forEach((student) => {
-        if (student.gpa > result.gpa) {
-            result = student;
-        }
-    });
-    return result;
-};
-let topStudent: Student = getTopStudent(GroupStudent);
-console.log(
-    `Học viên có điểm cao nhất là  ${topStudent.name} (${topStudent.gpa})`,
-);
+const getTopStudent = (groupStudent: Student[]): Student | null => {
+    if (groupStudent.length == 0) {
+        return null;
+    }
 
-const getPassedStudents = (GroupStudent: Student[]): Student[] => {
-    return GroupStudent.filter((student) => {
+    return groupStudent.reduce((top, student) =>
+        student.gpa > top.gpa ? student : top,
+    );
+};
+console.log(getTopStudent([]));
+
+let topStudent: Student | null = getTopStudent(groupStudent);
+if (topStudent) {
+    console.log(
+        `Học viên có điểm cao nhất là  ${topStudent.name} (${topStudent.gpa})`,
+    );
+}
+
+const getPassedStudents = (groupStudent: Student[]): Student[] => {
+    return groupStudent.filter((student) => {
         return student.gpa >= 5;
     });
 };
-// console.log(getPassedStudents(GroupStudent));
+// console.log(getPassedStudents(groupStudent));
 // console.log(getPassedStudents(GroupStudent2));
 
 console.log(
-    `Số lượng học viên đạt là : ${getPassedStudents(GroupStudent).length}`,
+    `Số lượng học viên đạt là : ${getPassedStudents(groupStudent).length}`,
 );
 
-const countByAge = (GroupStudent: Student[], age: number): number => {
-    const counted: Student[] = GroupStudent.filter((student) => {
+const countByAge = (groupStudent: Student[], age: number): number => {
+    const counted: Student[] = groupStudent.filter((student) => {
         return student.age === age;
     });
     return counted.length;
@@ -96,7 +102,7 @@ const countByAge = (GroupStudent: Student[], age: number): number => {
 
 const age: number = 13;
 
-console.log(`Số học viên ${age} tuổi: ${countByAge(GroupStudent, age)}`);
+console.log(`Số học viên ${age} tuổi: ${countByAge(groupStudent, age)}`);
 
 //Bai 3
 
@@ -106,7 +112,7 @@ interface Drink {
     name: string;
     size: Size;
     quantity: number;
-    toppping: Boolean;
+    topping: boolean;
 }
 
 const getPriceBySize = (size: Size): number => {
@@ -123,13 +129,13 @@ const getPriceBySize = (size: Size): number => {
     }
 };
 const calculateDrink = (drink: Drink): number => {
-    const price: number = getPriceBySize(drink.size);
-    return drink.toppping ? price + 5000 : price;
+    const price: number = getPriceBySize(drink.size) * drink.quantity;
+    return drink.topping ? price + 5000 : price;
 };
 
 const calculateOrder = (order: Drink[]): number => {
     let result = order.reduce((total, drink) => {
-        return total + calculateDrink(drink) * drink.quantity;
+        return total + calculateDrink(drink);
     }, 0);
     return result;
 };
@@ -144,31 +150,31 @@ const order: Drink[] = [
         name: "Trà sữa trân châu",
         size: "M",
         quantity: 2,
-        toppping: true,
+        topping: true,
     },
     {
         name: "Trà đào",
         size: "L",
         quantity: 4,
-        toppping: false,
+        topping: false,
     },
     {
         name: "Matcha latte",
         size: "S",
         quantity: 3,
-        toppping: true,
+        topping: true,
     },
 ];
 
-order.forEach((drink) => {
+order.forEach((drink: Drink) => {
     console.log(
         `${drink.name} (${drink.size}) x${drink.quantity}: ${formatMoney(drink.quantity * calculateDrink(drink))}`,
     );
 });
 
-const total = calculateOrder(order);
-const discount = total >= 200000 ? total * 0.1 : 0;
-const payment = total - discount;
+const total: number = calculateOrder(order);
+const discount: number = total >= 200000 ? total * 0.1 : 0;
+const payment: number = total - discount;
 
 console.log(`Tổng tiền: ${formatMoney(total)}`);
 console.log(`Giảm giá: ${formatMoney(discount)}`);
