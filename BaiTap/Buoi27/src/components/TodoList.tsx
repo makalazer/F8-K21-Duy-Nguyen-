@@ -7,14 +7,33 @@ export const Todolist = () => {
         text: string;
         done: boolean;
         isEdit: boolean;
+        isAllowToEdit: boolean;
     };
     const [filterType, setFilterType] = useState<"all" | "doing" | "done">(
         "all",
     );
     const [todos, setTodos] = useState<Todo[]>([
-        { id: "1", text: "test 1", done: false, isEdit: false },
-        { id: "2", text: "test 2", done: true, isEdit: false },
-        { id: "3", text: "test 3", done: false, isEdit: false },
+        {
+            id: "1",
+            text: "test 1",
+            done: false,
+            isEdit: false,
+            isAllowToEdit: true,
+        },
+        {
+            id: "2",
+            text: "test 2",
+            done: true,
+            isEdit: false,
+            isAllowToEdit: true,
+        },
+        {
+            id: "3",
+            text: "test 3",
+            done: false,
+            isEdit: false,
+            isAllowToEdit: true,
+        },
     ]);
     const [inputText, setInputText] = useState<string>("");
     const [editText, setEditText] = useState<string>("");
@@ -42,7 +61,13 @@ export const Todolist = () => {
 
         setTodos((prev) => [
             ...prev,
-            { id: crypto.randomUUID(), text, done: false, isEdit: false },
+            {
+                id: crypto.randomUUID(),
+                text,
+                done: false,
+                isEdit: false,
+                isAllowToEdit: true,
+            },
         ]);
         setInputText("");
     };
@@ -58,17 +83,25 @@ export const Todolist = () => {
     const handleEditBtn = (currentTodo: Todo) => {
         setTodos((prev) =>
             prev.map((todo) =>
-                todo.id === currentTodo.id ? { ...todo, isEdit: true } : todo,
+                todo.id === currentTodo.id
+                    ? { ...todo, isEdit: true }
+                    : { ...todo, isAllowToEdit: false },
             ),
         );
         setEditText(currentTodo.text);
+        inputRef.current = document.querySelector(`#${currentTodo.id}edit`);
     };
     const handleSave = (id: string) => {
         setTodos((prev) =>
             prev.map((todo) =>
                 todo.id === id
-                    ? { ...todo, text: editText, isEdit: false }
-                    : todo,
+                    ? {
+                          ...todo,
+                          text: editText,
+                          isEdit: false,
+                          isAllowToEdit: true,
+                      }
+                    : { ...todo, isAllowToEdit: true },
             ),
         );
     };
@@ -89,6 +122,7 @@ export const Todolist = () => {
         <div>
             <h1>Todo List</h1>
             <input
+                className="border-2 rounded-md p-1 pl-3"
                 ref={inputRef}
                 id="input"
                 type="text"
@@ -152,6 +186,8 @@ export const Todolist = () => {
                         >
                             {todo.isEdit ? (
                                 <input
+                                    ref={inputRef}
+                                    className="border-solid border-2"
                                     type="text"
                                     name=""
                                     id={todo.id + "edit"}
@@ -186,6 +222,7 @@ export const Todolist = () => {
                                     </button>
                                 ) : (
                                     <button
+                                        disabled={!todo.isAllowToEdit}
                                         onClick={() => {
                                             handleEditBtn(todo);
                                         }}
