@@ -1,5 +1,11 @@
+import AppRoutes from "./AppRoute";
+
 function App() {
-    return <div className="text-4xl text-red-500">App</div>;
+    return (
+        <>
+            <AppRoutes />
+        </>
+    );
 }
 
 export default App;
