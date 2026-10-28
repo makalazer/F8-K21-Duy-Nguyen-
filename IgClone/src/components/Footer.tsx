@@ -66,7 +66,7 @@ const FooterLink = [
 ];
 function Footer() {
     return (
-        <div className="w-screen">
+        <div className="w-screen  lg:border-t-[#4b4d4f] lg:border-t-2">
             <div className="flex flex-row px-4 flex-wrap gap-3 justify-center mt-6 mb-4">
                 {FooterLink.map((item, index) => {
                     return (
