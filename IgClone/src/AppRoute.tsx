@@ -1,12 +1,12 @@
 import { Routes, Route } from "react-router-dom";
 import LogingPage from "./page/LogingPage";
-import Regidter from "./page/Regidter";
+import Register from "./page/Register";
 
 function AppRoutes() {
     return (
         <Routes>
             <Route path="/" element={<LogingPage />} />
-            <Route path="/register" element={<Regidter />} />
+            <Route path="/register" element={<Register />} />
         </Routes>
     );
 }
