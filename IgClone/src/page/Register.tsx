@@ -18,12 +18,13 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select";
-import { Link } from "react-router-dom";
 import { Controller, useForm } from "react-hook-form";
 import { useMemo } from "react";
 import { days, months, years } from "@/utils/Constant";
 import { registerFormSchema } from "@/schema/form-schema";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { postRegister } from "@/services/auth.service";
+import { useMutation } from "@tanstack/react-query";
 
 type RegisterFormData = {
     email: string;
@@ -49,8 +50,25 @@ function Register() {
         resolver: zodResolver(registerFormSchema),
     });
 
+    const mutation = useMutation({
+        mutationFn: postRegister,
+        onSuccess: () => {
+            window.location.href = "/verify-email";
+        },
+    });
+
+    const errorMessage =
+        mutation.isError &&
+        typeof mutation.error === "object" &&
+        mutation.error !== null &&
+        "response" in mutation.error
+            ? (mutation.error as { response?: { data?: { message?: string } } })
+                  .response?.data?.message || "Có lỗi xảy ra. Vui lòng thử lại."
+            : "";
+
     const onSubmit = (data: RegisterFormData) => {
         console.log(data);
+        mutation.mutate(data);
     };
     const dayOptions = useMemo(() => days(), []);
     const yearOptions = useMemo(() => years(), []);
@@ -337,7 +355,11 @@ function Register() {
                                 gồm quảng cáo.
                             </FieldDescription>
                         </FieldSet>
-                        <FieldSet></FieldSet>
+                        {errorMessage && (
+                            <span className="italic text-red-600 text-s m-auto">
+                                {errorMessage}
+                            </span>
+                        )}
                         <Field orientation="vertical">
                             <Button
                                 type="submit"
@@ -345,16 +367,20 @@ function Register() {
                                 className={
                                     "rounded-full w-full py-6 bg-blue-600 text-md mb-8"
                                 }
+                                disabled={mutation.isPending}
                             >
-                                Gửi
+                                {mutation.isPending ? "Đang gửi" : "Gửi"}
                             </Button>
                             <Button
                                 variant="secondary"
                                 className={
                                     "rounded-full w-full py-6 bg-[#28292b] text-md"
                                 }
+                                onClick={() => {
+                                    window.location.href = "/login";
+                                }}
                             >
-                                <Link to="/">Tôi có tài khoản rồi</Link>
+                                Tôi có tài khoản rồi
                             </Button>
                         </Field>
                     </FieldGroup>

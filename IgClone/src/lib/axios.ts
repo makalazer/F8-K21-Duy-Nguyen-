@@ -15,7 +15,7 @@ instance.interceptors.request.use((config: InternalAxiosRequestConfig) => {
     const token = getAccessToken();
 
     if (token) {
-        config.headers.Authorization = `Bearer ${token} `;
+        config.headers.Authorization = `Bearer ${token}`;
     }
 
     if (config.data instanceof FormData) {
@@ -51,6 +51,16 @@ instance.interceptors.response.use(
         if (error.response?.status !== 401 || !originalRequest) {
             return Promise.reject(error);
         }
+        const url = originalRequest.url || "";
+        const skipResfresh =
+            url.includes("/auth/login") ||
+            url.includes("/auth/register") ||
+            url.includes("/auth/refresh-token") ||
+            url.includes("/auth/forgot-password");
+
+        if (skipResfresh) {
+            return Promise.reject(error);
+        }
 
         if (originalRequest._retry) {
             clearToken();
@@ -76,7 +86,7 @@ instance.interceptors.response.use(
                 throw new Error("Can not refresh token");
             }
             const res = await axios.post(
-                "${instance.defaults.baseURL}/api/auth/refresh-token",
+                `${instance.defaults.baseURL}/api/auth/refresh-token`,
                 { refreshToken },
             );
 

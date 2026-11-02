@@ -1,7 +1,9 @@
 import { instance } from "@/lib/axios";
 
 export const postRegister = async (data: Record<string, unknown>) => {
-    const response = await instance.post("/api/auth/register", data);
+    const response = await instance.post("/api/auth/register", data, {
+        headers: { "Content-Type": "application/json" },
+    });
     return response.data;
 };
 
