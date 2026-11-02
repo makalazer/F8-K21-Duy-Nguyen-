@@ -22,19 +22,32 @@ import { Link } from "react-router-dom";
 import { Controller, useForm } from "react-hook-form";
 import { useMemo } from "react";
 import { days, months, years } from "@/utils/Constant";
+import { registerFormSchema } from "@/schema/form-schema";
+import { zodResolver } from "@hookform/resolvers/zod";
+
 type RegisterFormData = {
     email: string;
     password: string;
-    "confirm-password": string;
+    confirmPassword: string;
     day: string;
     month: string;
     year: string;
     name: string;
-    "user-name": string;
+    username: string;
 };
 
 function Register() {
-    const { register, handleSubmit, control } = useForm<RegisterFormData>();
+    const {
+        register,
+        handleSubmit,
+        control,
+        trigger,
+        formState: { errors },
+    } = useForm<RegisterFormData>({
+        mode: "onBlur",
+        reValidateMode: "onBlur",
+        resolver: zodResolver(registerFormSchema),
+    });
 
     const onSubmit = (data: RegisterFormData) => {
         console.log(data);
@@ -62,20 +75,25 @@ function Register() {
                                 chẳng hạn như Instagram.
                             </FieldDescription>
                             <FieldGroup className="font-semibold">
-                                <Field>
+                                <Field data-invalid={errors.email}>
                                     <FieldLabel htmlFor="checkout-7j9-card-name-43j">
-                                        Số di động hoặc email
+                                        Email
                                     </FieldLabel>
                                     <FloatingInput
-                                        label="Số di động, tên người dùng hoặc Email"
+                                        label="Email"
                                         type="text"
                                         labelClassName="bg-background"
                                         inputWrapperClassName="w-full"
                                         className="min-w-full"
                                         {...register("email")}
                                     />
+                                    {errors.email && (
+                                        <span className="text-red-600 text-xs">
+                                            {errors.email.message}
+                                        </span>
+                                    )}
                                 </Field>
-                                <Field>
+                                <Field data-invalid={errors.password}>
                                     <FieldLabel htmlFor="checkout-7j9-card-number-uw1">
                                         Mật khẩu
                                     </FieldLabel>
@@ -85,8 +103,13 @@ function Register() {
                                         labelClassName="bg-background"
                                         {...register("password")}
                                     />
+                                    {errors.password && (
+                                        <span className="text-red-600 text-xs">
+                                            {errors.password.message}
+                                        </span>
+                                    )}
                                 </Field>
-                                <Field>
+                                <Field data-invalid={errors.confirmPassword}>
                                     <FieldLabel htmlFor="checkout-7j9-card-number-uw1">
                                         Xác nhận mật khẩu
                                     </FieldLabel>
@@ -94,12 +117,21 @@ function Register() {
                                         label="Xác nhận mật khẩu "
                                         inputWrapperClassName="w-full"
                                         labelClassName="bg-background"
-                                        {...register("confirm-password")}
+                                        {...register("confirmPassword", {
+                                            onBlur: () => {
+                                                trigger("confirmPassword");
+                                            },
+                                        })}
                                     />
+                                    {errors.confirmPassword && (
+                                        <span className="text-red-600 text-xs">
+                                            {errors.confirmPassword.message}
+                                        </span>
+                                    )}
                                 </Field>
                                 <FieldLabel>Ngày Sinh</FieldLabel>
                                 <div className="grid grid-cols-3 gap-4">
-                                    <Field>
+                                    <Field data-invalid={errors.day}>
                                         <FieldLabel htmlFor="checkout-7j9-cvv">
                                             Day
                                         </FieldLabel>
@@ -144,6 +176,11 @@ function Register() {
                                                 );
                                             }}
                                         />
+                                        {errors.day && (
+                                            <span className="text-red-600 text-xs">
+                                                {errors.day.message}
+                                            </span>
+                                        )}
                                     </Field>
                                     <Field>
                                         <FieldLabel htmlFor="checkout-exp-month-ts6">
@@ -190,6 +227,11 @@ function Register() {
                                                 );
                                             }}
                                         />
+                                        {errors.month && (
+                                            <span className="text-red-600 text-xs">
+                                                {errors.month.message}
+                                            </span>
+                                        )}
                                     </Field>
                                     <Field>
                                         <FieldLabel htmlFor="checkout-7j9-exp-year-f59">
@@ -236,6 +278,11 @@ function Register() {
                                                 );
                                             }}
                                         />
+                                        {errors.year && (
+                                            <span className="text-red-600 text-xs">
+                                                {errors.year.message}
+                                            </span>
+                                        )}
                                     </Field>
                                 </div>
                             </FieldGroup>
@@ -253,6 +300,11 @@ function Register() {
                                 className="min-w-full"
                                 {...register("name")}
                             />
+                            {errors.name && (
+                                <span className="text-red-600 text-xs">
+                                    {errors.name.message}
+                                </span>
+                            )}
                         </Field>
                         <Field>
                             <FieldLabel htmlFor="checkout-7j9-card-name-43j">
@@ -264,8 +316,13 @@ function Register() {
                                 labelClassName="bg-background"
                                 inputWrapperClassName="w-full"
                                 className="min-w-full"
-                                {...register("user-name")}
+                                {...register("username")}
                             />
+                            {errors.username && (
+                                <span className="text-red-600 text-xs">
+                                    {errors.username.message}
+                                </span>
+                            )}
                         </Field>
                         <FieldSet>
                             <FieldDescription>
