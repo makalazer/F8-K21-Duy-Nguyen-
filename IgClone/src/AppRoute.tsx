@@ -3,12 +3,13 @@ import LogingPage from "./page/LogingPage";
 import VerifyEmail from "./page/VerifyEmail";
 import Register from "./page/Register";
 import ForgotPassword from "./page/ForgotPassword";
+import MainLayout from "./layouts/MainLayout";
 
 function AppRoutes() {
     return (
         <Routes>
             //TODO
-            <Route path="/" element={<LogingPage />} />
+            <Route path="/" element={<MainLayout />} />
             <Route path="/login" element={<LogingPage />} />
             //TODO
             <Route path="/verify-email" element={<VerifyEmail />} />

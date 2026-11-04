@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import { PasswordFloatingInput } from "@/components/PasswordFloatingInput";
 import { Button } from "@/components/ui/button";
 import { postLogin } from "@/services/auth.service";
+import { saveToken } from "@/utils/utils";
 import { useMutation } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
@@ -15,9 +16,11 @@ function LogingPage() {
     const { register, handleSubmit } = useForm<LoginFormData>();
     const mutation = useMutation({
         mutationFn: postLogin,
+        onSuccess: (data) => {
+            saveToken(data?.data?.tokens);
+        },
     });
     const onSubmit = (data: LoginFormData) => {
-        console.log(data);
         mutation.mutate(data);
     };
     const errorMessage =
