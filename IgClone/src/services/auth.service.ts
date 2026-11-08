@@ -1,4 +1,5 @@
 import { instance } from "@/lib/axios";
+import { getRefreshToken } from "@/utils/utils";
 
 export const postRegister = async (data: Record<string, unknown>) => {
     const response = await instance.post("/api/auth/register", data, {
@@ -12,8 +13,9 @@ export const postLogin = async (data: Record<string, unknown>) => {
     return response.data;
 };
 
-export const postLogout = async (data: Record<string, unknown>) => {
-    const response = await instance.post("/api/auth/logout", data);
+export const postLogout = async () => {
+    const refreshToken = getRefreshToken();
+    const response = await instance.post("/api/auth/logout", { refreshToken });
     return response.data;
 };
 
