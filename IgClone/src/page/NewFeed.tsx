@@ -4,13 +4,9 @@ import PostCard, {
 import Suggestions from "@/components/ui/Suggestions/Suggestions";
 import { CONFIG } from "@/config";
 import MainLayout from "@/layouts/MainLayout";
-import {
-    deleteUnlikePost,
-    getNewsfeed,
-    postLikePost,
-} from "@/services/commom.service";
+import { getNewsfeed } from "@/services/commom.service";
 import { formatTimeAgo } from "@/utils/utils";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 
 export type NewsfeedPost = {
     _id: string;
@@ -25,14 +21,6 @@ export type NewsfeedPost = {
 };
 
 function NewFeed() {
-    const mutationLike = useMutation({
-        mutationFn: postLikePost,
-    });
-
-    const mutationUnlike = useMutation({
-        mutationFn: deleteUnlikePost,
-    });
-
     const { data } = useQuery({
         queryKey: ["newsfeed"],
         queryFn: async () => getNewsfeed("10", "0"),
@@ -40,7 +28,7 @@ function NewFeed() {
 
     function toPostCardView(post: NewsfeedPost): PostCardProps {
         return {
-            id:post._id,
+            id: post._id,
             avatar: post.image,
             img: CONFIG.BASE_URL + post.image,
             username: post.userId.username,
@@ -48,11 +36,8 @@ function NewFeed() {
             isLiked: post.isLiked,
             isSaved: post.isSaved,
             likes: post.likes,
-            like: () => mutationLike.mutate(post._id),
-            unlike: () => mutationUnlike.mutate(post._id),
         };
     }
-    console.log(data);
     return (
         <MainLayout>
             <div className="m-auto w-240 flex relative justify-between">

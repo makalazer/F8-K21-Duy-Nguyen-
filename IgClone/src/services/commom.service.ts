@@ -31,3 +31,8 @@ export const deleteUnsavePost = async (postId: string) => {
     const response = await instance.delete(`/api/posts/${postId}/save`);
     return response.data;
 };
+
+export const getSuggestionUser = async (limit: string) => {
+    const response = await instance.get(`/api/users/suggested?limit=${limit}`);
+    return response.data;
+};
