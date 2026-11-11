@@ -21,7 +21,7 @@ export type NewsfeedPost = {
     createdAt: string;
     isLiked: boolean;
     isSaved: boolean;
-    likes: string;
+    likes: number;
 };
 
 function NewFeed() {
@@ -40,6 +40,7 @@ function NewFeed() {
 
     function toPostCardView(post: NewsfeedPost): PostCardProps {
         return {
+            id:post._id,
             avatar: post.image,
             img: CONFIG.BASE_URL + post.image,
             username: post.userId.username,

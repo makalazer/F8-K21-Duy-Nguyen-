@@ -21,3 +21,13 @@ export const deleteUnlikePost = async (postId: string) => {
     const response = await instance.delete(`/api/posts/${postId}/like`);
     return response.data;
 };
+
+export const postSavePost = async (postId: string) => {
+    const response = await instance.post(`/api/posts/${postId}/save`);
+    return response.data;
+};
+
+export const deleteUnsavePost = async (postId: string) => {
+    const response = await instance.delete(`/api/posts/${postId}/save`);
+    return response.data;
+};
