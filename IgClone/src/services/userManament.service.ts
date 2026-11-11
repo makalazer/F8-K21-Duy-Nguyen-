@@ -1,7 +1,7 @@
 import { instance } from "@/lib/axios";
 
 export const getCurrentUser = async () => {
-    const response = await instance.get(`/auth/profile`);
+    const response = await instance.get(`/api/users/profile`);
     return response.data;
 };
 

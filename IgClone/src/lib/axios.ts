@@ -1,3 +1,4 @@
+import { CONFIG } from "@/config";
 import {
     clearToken,
     getAccessToken,
@@ -7,7 +8,7 @@ import {
 import axios, { AxiosError, type InternalAxiosRequestConfig } from "axios";
 
 export const instance = axios.create({
-    baseURL: "https://instagram.f8team.dev",
+    baseURL: CONFIG.BASE_URL,
     timeout: 600000,
 });
 

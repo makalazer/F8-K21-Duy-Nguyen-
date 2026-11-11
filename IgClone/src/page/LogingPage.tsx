@@ -18,6 +18,7 @@ function LogingPage() {
         mutationFn: postLogin,
         onSuccess: (data) => {
             saveToken(data?.data?.tokens);
+            navigate("/");
         },
     });
     const onSubmit = (data: LoginFormData) => {

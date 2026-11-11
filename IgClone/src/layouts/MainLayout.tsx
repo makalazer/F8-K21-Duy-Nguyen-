@@ -8,7 +8,7 @@ function MainLayout({ children }: MainLayoutProps) {
     return (
         <div className="w-screen h-screen bg-blend-color-burn">
             <Sidebar />
-            <div className="bg-transparent w-screen">{children}</div>
+            <div className="bg-transparent w-screen ">{children}</div>
         </div>
     );
 }
