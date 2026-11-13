@@ -30,7 +30,7 @@ function NewFeed() {
         return {
             id: post._id,
             avatar: post.image,
-            img: CONFIG.BASE_URL + post.image,
+            img: post.image ? CONFIG.BASE_URL + post.image : "",
             username: post.userId.username,
             creatAt: formatTimeAgo(post.createdAt),
             isLiked: post.isLiked,
@@ -41,7 +41,7 @@ function NewFeed() {
     return (
         <MainLayout>
             <div className="m-auto w-240 flex relative justify-between">
-                <div className="m-auto w-120 flex flex-col relative">
+                <div className="m-auto w-120 flex flex-col ">
                     {data?.data?.posts?.map((post: NewsfeedPost) => {
                         return (
                             <PostCard
@@ -52,7 +52,7 @@ function NewFeed() {
                     })}
                 </div>
                 <div className="w-90">
-                    <div className="fixed min-w-90 top-8">
+                    <div className="sticky w-90 top-8">
                         <Suggestions />
                     </div>
                 </div>

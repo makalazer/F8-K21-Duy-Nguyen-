@@ -26,7 +26,7 @@ function Sidebar() {
     });
 
     return (
-        <aside className="h-screen fixed w-14 hover:w-56 transition-all duration-300 ease-in-out  bg-transparent overflow-hidden group flex flex-col justify-between  z-10">
+        <aside className="h-screen fixed w-14 hover:w-56 transition-all duration-300 ease-in-out  bg-transparent overflow-hidden group flex flex-col justify-between  z-10  top-0 left-0 ">
             <img
                 src="src/assets/instagram-logo-facebook-2-svgrepo-com.svg"
                 alt=""
@@ -45,7 +45,7 @@ function Sidebar() {
                     );
                 })}
             </nav>
-            <Menubar className={"border-0 w-full p-0"}>
+            <Menubar className={"border-0 w-full p-0 pb-2"}>
                 <MenubarMenu>
                     <MenubarTrigger>
                         <Menu

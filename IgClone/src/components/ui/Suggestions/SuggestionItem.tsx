@@ -1,5 +1,4 @@
-import { postFollowUser } from "@/services/commom.service";
-import { useMutation } from "@tanstack/react-query";
+import useSuggestionAction from "./hooks/useSuggestionAction";
 
 type SuggestionItemProps = {
     profilePicture: string | null;
@@ -7,10 +6,9 @@ type SuggestionItemProps = {
     userId: string;
     isFollowing: boolean;
 };
+
 function SuggestionItem(props: SuggestionItemProps) {
-    const mutation = useMutation({
-        mutationFn: postFollowUser,
-    });
+    const { followUser } = useSuggestionAction();
 
     const { profilePicture, userId, username, isFollowing } = props;
     return (
@@ -34,13 +32,18 @@ function SuggestionItem(props: SuggestionItemProps) {
                 </div>
             </div>
             {isFollowing ? (
-                <p className="text-mauve-400 cursor-pointer hover:opacity-80 py-auto">
+                <p
+                    className="text-mauve-400 cursor-pointer hover:opacity-80 py-auto"
+                    onClick={() => {
+                        followUser(userId, isFollowing);
+                    }}
+                >
                     Đã theo dõi
                 </p>
             ) : (
                 <p
                     onClick={() => {
-                        mutation.mutate(userId);
+                        followUser(userId, isFollowing);
                     }}
                     className="text-blue-400 cursor-pointer hover:opacity-80 py-auto"
                 >

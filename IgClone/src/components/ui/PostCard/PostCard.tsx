@@ -1,6 +1,6 @@
 import { Bookmark, Ellipsis, Heart, MessageCircle, Send } from "lucide-react";
-import CommentOnFeed from "./CommentOnFeed";
-import usePostAction from "@/components/hooks/usePostAction";
+import usePostAction from "./hooks/usePostAction";
+import Caption from "./Caption";
 
 export type PostCardProps = {
     id: string;
@@ -24,17 +24,24 @@ function PostCard(props: PostCardProps) {
         props;
     const { toggleLike, toggleSave } = usePostAction();
     return (
-        <div className="w-full flex flex-col gap-3 mt-8">
-            <div className="flex">
-                <div className="flex-1 flex gap-3 justify-start">
-                    <img src={avatar} alt="" />
-                    <span>{username}</span>
-                    <span>{creatAt}</span>
+        <div className="w-full max-w-full min-w-0 flex flex-col gap-3 mt-8">
+            <div className="flex max-w-full">
+                <div className="flex-1 min-w-0 flex gap-3 items-center justify-start">
+                    <img
+                        src={avatar}
+                        alt=""
+                        className="size-8 rounded-full object-cover shrink-0"
+                    />
+                    <span className="truncate">{username}</span>
+                    <span className="shrink-0">{creatAt}</span>
                 </div>
                 <Ellipsis size={24} />
             </div>
-            <img src={img} className="aspect-4/5 min-w-full rounded-xl" />
-            <div className="flex gap3">
+            <img
+                src={img}
+                className="w-full max-w-full aspect-4/5 object-cover"
+            />
+            <div className="flex gap-3">
                 <div className="flex-1 flex gap-3 justify-start">
                     <div className="flex gap-1 items-center ">
                         {isLiked ? (
@@ -68,7 +75,7 @@ function PostCard(props: PostCardProps) {
                     />
                 )}
             </div>
-            <CommentOnFeed {...mockCmt} />
+            <Caption {...mockCmt} />
         </div>
     );
 }

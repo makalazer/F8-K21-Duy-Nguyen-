@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-type CommontOnFeedProps = {
+type CaptionProps = {
     userLink: string;
     username: string;
     comment: string;
 };
-function CommentOnFeed(props: CommontOnFeedProps) {
+function Caption(props: CaptionProps) {
     const { userLink, comment, username } = props;
     return (
         <div className="flex gap-2">
@@ -16,4 +16,4 @@ function CommentOnFeed(props: CommontOnFeedProps) {
     );
 }
 
-export default CommentOnFeed;
+export default Caption;

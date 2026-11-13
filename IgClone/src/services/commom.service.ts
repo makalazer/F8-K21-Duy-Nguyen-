@@ -5,6 +5,11 @@ export const postFollowUser = async (userId: string) => {
     return response.data;
 };
 
+export const deleteUnfollowUser = async (userId: string) => {
+    const response = await instance.delete(`/api/follow/${userId}/follow`);
+    return response.data;
+};
+
 export const getNewsfeed = async (limit: string, offset: string) => {
     const response = await instance.get(
         `/api/posts/feed?limit=${limit}&offset=${offset}`,
