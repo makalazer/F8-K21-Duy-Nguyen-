@@ -88,6 +88,7 @@ function useSuggestionAction() {
         followUser: (userId: string, isFollowing: boolean) => {
             followMutation.mutate({ userId, isFollowing });
         },
+        isPending: followMutation.isPending,
     };
 }
 

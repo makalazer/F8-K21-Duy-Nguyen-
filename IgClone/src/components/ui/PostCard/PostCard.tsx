@@ -2,26 +2,36 @@ import { Bookmark, Ellipsis, Heart, MessageCircle, Send } from "lucide-react";
 import usePostAction from "./hooks/usePostAction";
 import Caption from "./Caption";
 
+export type mediaType = "image" | "video";
+
 export type PostCardProps = {
     id: string;
     avatar: string;
     username: string;
     creatAt: string;
-    img: string;
+    img?: string;
     isLiked: boolean;
     isSaved: boolean;
     likes: number;
-    like?: () => void;
-    unlike?: () => void;
+    mediaType: mediaType;
+    video?: string;
+    caption: string;
 };
-const mockCmt = {
-    userLink: "string",
-    username: "string",
-    comment: "string",
-};
+
 function PostCard(props: PostCardProps) {
-    const { id, avatar, username, creatAt, img, isLiked, isSaved, likes } =
-        props;
+    const {
+        id,
+        avatar,
+        username,
+        creatAt,
+        img,
+        isLiked,
+        isSaved,
+        likes,
+        video,
+        mediaType,
+        caption,
+    } = props;
     const { toggleLike, toggleSave } = usePostAction();
     return (
         <div className="w-full max-w-full min-w-0 flex flex-col gap-3 mt-8">
@@ -37,10 +47,19 @@ function PostCard(props: PostCardProps) {
                 </div>
                 <Ellipsis size={24} />
             </div>
-            <img
-                src={img}
-                className="w-full max-w-full aspect-4/5 object-cover"
-            />
+            {mediaType === "image" ? (
+                <img
+                    src={img}
+                    className="w-full max-w-full aspect-4/5 object-cover"
+                />
+            ) : (
+                <video
+                    src={video}
+                    loop
+                    autoPlay
+                    className="w-full max-w-full aspect-4/5"
+                ></video>
+            )}
             <div className="flex gap-3">
                 <div className="flex-1 flex gap-3 justify-start">
                     <div className="flex gap-1 items-center ">
@@ -75,7 +94,7 @@ function PostCard(props: PostCardProps) {
                     />
                 )}
             </div>
-            <Caption {...mockCmt} />
+            <Caption username={username} caption={caption} userLink="" />
         </div>
     );
 }

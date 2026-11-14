@@ -5,6 +5,7 @@ import Register from "./page/Register";
 import ForgotPassword from "./page/ForgotPassword";
 import NewFeed from "./page/NewFeed";
 import AuthMiddleware from "./middleware/AuthMiddleware";
+import ProfilePage from "./page/ProfilePage";
 
 function AppRoutes() {
     return (
@@ -12,6 +13,7 @@ function AppRoutes() {
             //TODO
             <Route element={<AuthMiddleware />}>
                 <Route path="/" element={<NewFeed />} />
+                <Route path="/profile" element={<ProfilePage />} />
             </Route>
             <Route path="/login" element={<LogingPage />} />
             //TODO

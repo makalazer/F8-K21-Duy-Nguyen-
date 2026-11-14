@@ -18,6 +18,9 @@ export type NewsfeedPost = {
     isLiked: boolean;
     isSaved: boolean;
     likes: number;
+    mediaType?: string;
+    video?: string;
+    caption: string;
 };
 
 function NewFeed() {
@@ -36,6 +39,9 @@ function NewFeed() {
             isLiked: post.isLiked,
             isSaved: post.isSaved,
             likes: post.likes,
+            mediaType: post.mediaType === "video" ? "video" : "image",
+            video: post.video ? CONFIG.BASE_URL + post.video : "",
+            caption: post.caption,
         };
     }
     return (

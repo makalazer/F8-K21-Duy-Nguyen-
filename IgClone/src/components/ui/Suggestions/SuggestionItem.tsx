@@ -1,3 +1,4 @@
+import { Loader } from "lucide-react";
 import useSuggestionAction from "./hooks/useSuggestionAction";
 
 type SuggestionItemProps = {
@@ -8,7 +9,7 @@ type SuggestionItemProps = {
 };
 
 function SuggestionItem(props: SuggestionItemProps) {
-    const { followUser } = useSuggestionAction();
+    const { followUser, isPending } = useSuggestionAction();
 
     const { profilePicture, userId, username, isFollowing } = props;
     return (
@@ -31,7 +32,9 @@ function SuggestionItem(props: SuggestionItemProps) {
                     <p>Gợi ý cho bạn</p>
                 </div>
             </div>
-            {isFollowing ? (
+            {isPending ? (
+                <Loader className="animate-spin text-blue-500" size={24} />
+            ) : isFollowing ? (
                 <p
                     className="text-mauve-400 cursor-pointer hover:opacity-80 py-auto"
                     onClick={() => {

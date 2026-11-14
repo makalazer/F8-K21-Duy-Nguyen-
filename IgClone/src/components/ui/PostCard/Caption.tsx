@@ -2,16 +2,16 @@ import { Link } from "react-router-dom";
 type CaptionProps = {
     userLink: string;
     username: string;
-    comment: string;
+    caption: string;
 };
 function Caption(props: CaptionProps) {
-    const { userLink, comment, username } = props;
+    const { userLink, caption, username } = props;
     return (
         <div className="flex gap-2">
             <Link to={userLink}>
                 <span className="font-bold">{username}</span>
             </Link>
-            <span>{comment}</span>
+            <span>{caption}</span>
         </div>
     );
 }

@@ -3,12 +3,16 @@ import { useQuery } from "@tanstack/react-query";
 
 const useUser = () => {
     const { data, isLoading, error } = useQuery({
-        queryKey: ["user"],
+        queryKey: ["current-user"],
         queryFn: getCurrentUser,
         retry: false,
     });
     //     const queryClient = useQueryClient();
-    return { user: data, isLoading, isAuthenticated: error ? false : true };
+    return {
+        user: data?.data,
+        isLoading,
+        isAuthenticated: error ? false : true,
+    };
 };
 
 export default useUser;
