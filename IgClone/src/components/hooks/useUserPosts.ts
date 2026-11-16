@@ -8,8 +8,12 @@ const useUserPosts = (userId: string) => {
         enabled: !!userId,
     });
 
-    const totalPosts = data?.data?.length ?? 0;
-    return { posts: data?.data?.posts, isPending, isError, totalPosts };
+    return {
+        posts: data?.data?.posts ?? [],
+        isPending,
+        isError,
+        totalPosts: data?.data?.total ?? 0,
+    };
 };
 
 export default useUserPosts;

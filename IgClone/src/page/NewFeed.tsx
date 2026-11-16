@@ -1,18 +1,16 @@
-import PostCard, {
-    type PostCardProps,
-} from "@/components/ui/PostCard/PostCard";
+import usePostAction from "@/components/ui/PostCard/hooks/usePostAction";
+import PostCard from "@/components/ui/PostCard/PostCard";
 import Suggestions from "@/components/ui/Suggestions/Suggestions";
-import { CONFIG } from "@/config";
 import MainLayout from "@/layouts/MainLayout";
-import { getNewsfeed } from "@/services/commom.service";
-import { formatTimeAgo } from "@/utils/utils";
-import { useQuery } from "@tanstack/react-query";
+import { cn } from "cn";
+import { CircleX } from "lucide-react";
 
 export type NewsfeedPost = {
     _id: string;
     image: string;
     userId: {
         username: string;
+        _id: string;
     };
     createdAt: string;
     isLiked: boolean;
@@ -21,41 +19,36 @@ export type NewsfeedPost = {
     mediaType?: string;
     video?: string;
     caption: string;
+    avatar?: string;
 };
 
 function NewFeed() {
-    const { data } = useQuery({
-        queryKey: ["newsfeed"],
-        queryFn: async () => getNewsfeed("10", "0"),
-    });
+    const { posts, toPostCardView, isNewsfeedPending, isNewsfeedError } =
+        usePostAction();
 
-    function toPostCardView(post: NewsfeedPost): PostCardProps {
-        return {
-            id: post._id,
-            avatar: post.image,
-            img: post.image ? CONFIG.BASE_URL + post.image : "",
-            username: post.userId.username,
-            creatAt: formatTimeAgo(post.createdAt),
-            isLiked: post.isLiked,
-            isSaved: post.isSaved,
-            likes: post.likes,
-            mediaType: post.mediaType === "video" ? "video" : "image",
-            video: post.video ? CONFIG.BASE_URL + post.video : "",
-            caption: post.caption,
-        };
-    }
     return (
         <MainLayout>
             <div className="m-auto w-240 flex relative justify-between">
-                <div className="m-auto w-120 flex flex-col ">
-                    {data?.data?.posts?.map((post: NewsfeedPost) => {
-                        return (
-                            <PostCard
-                                key={post?._id}
-                                {...toPostCardView(post)}
-                            />
-                        );
-                    })}
+                <div
+                    className={cn(
+                        "transition-all duration-800 ease-out transform m-auto w-120 flex flex-col ",
+                        isNewsfeedPending
+                            ? "opacity-0 translate-y-8"
+                            : "opacity-100 translate-y-0",
+                    )}
+                >
+                    {isNewsfeedError ? (
+                        <CircleX size={180} className="w-full mt-30" />
+                    ) : (
+                        posts.map((post: NewsfeedPost) => {
+                            return (
+                                <PostCard
+                                    key={post?._id}
+                                    {...toPostCardView(post)}
+                                />
+                            );
+                        })
+                    )}
                 </div>
                 <div className="w-90">
                     <div className="sticky w-90 top-8">

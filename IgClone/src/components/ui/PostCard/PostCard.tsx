@@ -16,6 +16,7 @@ export type PostCardProps = {
     mediaType: mediaType;
     video?: string;
     caption: string;
+    userId: string;
 };
 
 function PostCard(props: PostCardProps) {
@@ -31,17 +32,25 @@ function PostCard(props: PostCardProps) {
         video,
         mediaType,
         caption,
+        userId,
     } = props;
     const { toggleLike, toggleSave } = usePostAction();
     return (
         <div className="w-full max-w-full min-w-0 flex flex-col gap-3 mt-8">
             <div className="flex max-w-full">
                 <div className="flex-1 min-w-0 flex gap-3 items-center justify-start">
-                    <img
-                        src={avatar}
-                        alt=""
-                        className="size-8 rounded-full object-cover shrink-0"
-                    />
+                    {avatar ? (
+                        <img
+                            src={avatar}
+                            className="w-8 rounded-full aspect-square"
+                        />
+                    ) : (
+                        <div className="w-8  aspect-square capitalize rounded-full bg-[#e4e6eb] text-[#050505]  flex items-center ">
+                            <p className="mx-auto text-sm font-semibold">
+                                {username[0]}
+                            </p>
+                        </div>
+                    )}
                     <span className="truncate">{username}</span>
                     <span className="shrink-0">{creatAt}</span>
                 </div>
@@ -94,7 +103,7 @@ function PostCard(props: PostCardProps) {
                     />
                 )}
             </div>
-            <Caption username={username} caption={caption} userLink="" />
+            <Caption username={username} caption={caption} userId={userId} />
         </div>
     );
 }

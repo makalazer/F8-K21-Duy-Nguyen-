@@ -1,3 +1,4 @@
+import { CONFIG } from "@/config";
 import { getCurrentUser } from "@/services/userManament.service";
 import { useQuery } from "@tanstack/react-query";
 
@@ -7,11 +8,16 @@ const useUser = () => {
         queryFn: getCurrentUser,
         retry: false,
     });
-    //     const queryClient = useQueryClient();
     return {
-        user: data?.data,
+        currentUser: data?.data,
         isLoading,
         isAuthenticated: error ? false : true,
+        profilePicture: data?.data?.profilePicture
+            ? CONFIG.BASE_URL + data.data.profilePicture
+            : "",
+        currentUsername: data?.data?.username ?? "",
+        currentFullName: data?.data?.fullName ?? "",
+        currentUserId: data?.data?._id ?? "",
     };
 };
 

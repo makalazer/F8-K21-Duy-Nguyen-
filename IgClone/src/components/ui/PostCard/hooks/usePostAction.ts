@@ -1,11 +1,15 @@
+import { CONFIG } from "@/config";
 import type { NewsfeedPost } from "@/page/NewFeed";
 import {
     deleteUnlikePost,
     deleteUnsavePost,
+    getNewsfeed,
     postLikePost,
     postSavePost,
 } from "@/services/commom.service";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { formatTimeAgo } from "@/utils/utils";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import type { PostCardProps } from "../PostCard";
 
 const NEWSFEED_KEY = ["newsfeed"];
 const POST_ACTION_KEY = ["post-action"];
@@ -111,11 +115,37 @@ function usePostAction() {
         onSettled: syncWithServer,
     });
 
+    const { data, isPending, isError } = useQuery({
+        queryKey: ["newsfeed"],
+        queryFn: async () => getNewsfeed("10", "0"),
+    });
+
+    function toPostCardView(post: NewsfeedPost): PostCardProps {
+        return {
+            userId: post.userId._id,
+            id: post._id,
+            avatar: post?.avatar ? CONFIG.BASE_URL + post.avatar : "",
+            img: post.image ? CONFIG.BASE_URL + post.image : "",
+            username: post.userId.username,
+            creatAt: formatTimeAgo(post.createdAt),
+            isLiked: post.isLiked,
+            isSaved: post.isSaved,
+            likes: post.likes,
+            mediaType: post.mediaType === "video" ? "video" : "image",
+            video: post.video ? CONFIG.BASE_URL + post.video : "",
+            caption: post.caption,
+        };
+    }
+
     return {
         toggleLike: (postId: string, isLiked: boolean) =>
             likeMutation.mutate({ postId, isLiked }),
         toggleSave: (postId: string, isSaved: boolean) =>
             saveMutation.mutate({ postId, isSaved }),
+        posts: data?.data?.posts ?? [],
+        toPostCardView,
+        isNewsfeedPending: isPending,
+        isNewsfeedError: isError,
     };
 }
 

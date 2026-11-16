@@ -9,7 +9,7 @@ type SuggestionItemProps = {
 };
 
 function SuggestionItem(props: SuggestionItemProps) {
-    const { followUser, isPending } = useSuggestionAction();
+    const { followUser, isFollowPending } = useSuggestionAction();
 
     const { profilePicture, userId, username, isFollowing } = props;
     return (
@@ -32,7 +32,7 @@ function SuggestionItem(props: SuggestionItemProps) {
                     <p>Gợi ý cho bạn</p>
                 </div>
             </div>
-            {isPending ? (
+            {isFollowPending ? (
                 <Loader className="animate-spin text-blue-500" size={24} />
             ) : isFollowing ? (
                 <p

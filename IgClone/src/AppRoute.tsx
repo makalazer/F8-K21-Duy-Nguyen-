@@ -14,6 +14,7 @@ function AppRoutes() {
             <Route element={<AuthMiddleware />}>
                 <Route path="/" element={<NewFeed />} />
                 <Route path="/profile" element={<ProfilePage />} />
+                <Route path="/profile/:id" element={<ProfilePage />} />
             </Route>
             <Route path="/login" element={<LogingPage />} />
             //TODO

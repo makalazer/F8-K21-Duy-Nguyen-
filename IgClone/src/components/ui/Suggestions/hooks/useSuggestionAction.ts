@@ -1,6 +1,10 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import type { SuggestionsUser } from "../Suggestions";
-import { deleteUnfollowUser, postFollowUser } from "@/services/commom.service";
+import {
+    deleteUnfollowUser,
+    getSuggestionUser,
+    postFollowUser,
+} from "@/services/commom.service";
 
 type SuggestionsCache = { data?: SuggestionsUser[] };
 type Backup = [readonly unknown[], SuggestionsCache | undefined][];
@@ -84,11 +88,18 @@ function useSuggestionAction() {
         },
     });
 
+    const { data, isPending } = useQuery({
+        queryKey: ["suggestions"],
+        queryFn: async () => getSuggestionUser("10"),
+    });
+
     return {
         followUser: (userId: string, isFollowing: boolean) => {
             followMutation.mutate({ userId, isFollowing });
         },
-        isPending: followMutation.isPending,
+        isFollowPending: followMutation.isPending,
+        suggestions: data?.data ?? [],
+        isSuggestionsPending: isPending,
     };
 }
 
