@@ -43,9 +43,11 @@ export const getSuggestionUser = async (limit: string) => {
 };
 
 export const postCreatePost = async (caption: string, file: File) => {
-  const response = await instance.post(`/api/posts`, {
-    file,
-    caption,
+  const formData = new FormData();
+  formData.append('file', file);
+  formData.append('caption', caption);
+  const response = await instance.post(`/api/posts`, formData, {
+    headers: { 'Content-Type': 'multipart/form-data' },
   });
   return response.data;
 };
