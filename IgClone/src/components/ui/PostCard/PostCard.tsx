@@ -1,6 +1,7 @@
 import { Bookmark, Ellipsis, Heart, MessageCircle, Send } from 'lucide-react';
 import usePostAction from './hooks/usePostAction';
 import Caption from './Caption';
+import { Link } from 'react-router-dom';
 
 export type mediaType = 'image' | 'video';
 
@@ -39,14 +40,19 @@ function PostCard(props: PostCardProps) {
     <div className='w-full max-w-full min-w-0 flex flex-col gap-3 mt-8'>
       <div className='flex max-w-full'>
         <div className='flex-1 min-w-0 flex gap-3 items-center justify-start'>
-          {avatar ? (
-            <img src={avatar} className='w-8 rounded-full aspect-square' />
-          ) : (
-            <div className='w-8  aspect-square capitalize rounded-full bg-[#e4e6eb] text-[#050505]  flex items-center '>
-              <p className='mx-auto text-sm font-semibold'>{username[0]}</p>
-            </div>
-          )}
-          <span className='truncate'>{username}</span>
+          <Link to={`/profile/${userId}`} className='cursor-pointer'>
+            {avatar ? (
+              <img src={avatar} className='w-8 rounded-full aspect-square' />
+            ) : (
+              <div className='w-8  aspect-square capitalize rounded-full bg-[#e4e6eb] text-[#050505]  flex items-center '>
+                <p className='mx-auto text-sm font-semibold'>{username[0]}</p>
+              </div>
+            )}
+          </Link>
+
+          <Link to={`/profile/${userId}`} className='cursor-pointer'>
+            <span className='truncate'>{username}</span>
+          </Link>
           <span className='shrink-0'>{creatAt}</span>
         </div>
         <Ellipsis size={24} />

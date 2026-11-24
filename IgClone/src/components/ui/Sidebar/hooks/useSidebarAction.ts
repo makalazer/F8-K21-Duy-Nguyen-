@@ -17,6 +17,9 @@ const useSidebarAction = () => {
   const createPostMutation = useMutation({
     mutationFn: ({ caption, file }: { caption: string; file: File }) =>
       postCreatePost(caption, file),
+    onSettled: () => {
+      handleClearDialogData();
+    },
   });
 
   const mutationLogout = useMutation({
@@ -28,6 +31,14 @@ const useSidebarAction = () => {
       navigate('/login');
     },
   });
+
+  function handleClearDialogData() {
+    setCaption('');
+    setFileType('');
+    setPreviewURL('');
+    setSelectedFile(null);
+  }
+
   return {
     submitPost: createPostMutation.mutate,
     logout: mutationLogout.mutate,
@@ -36,11 +47,13 @@ const useSidebarAction = () => {
     setPreviewURL,
     setFileType,
     setOpenCreatePostDialog,
+    handleClearDialogData,
     selectedFile,
     previewURL,
     caption,
     fileType,
     openCreatePostDialog,
+    isPending: createPostMutation.isPending,
   };
 };
 

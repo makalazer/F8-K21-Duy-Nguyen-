@@ -8,12 +8,19 @@ import {
   postSavePost,
 } from '@/services/common.service';
 import { formatTimeAgo } from '@/utils/utils';
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import {
+  useInfiniteQuery,
+  useMutation,
+  useQueryClient,
+  type InfiniteData,
+} from '@tanstack/react-query';
 import type { PostCardProps } from '../PostCard';
+import { NEWSFEED_LIMIT } from '@/utils/Constant';
 
 const NEWSFEED_KEY = ['newsfeed'];
 const POST_ACTION_KEY = ['post-action'];
-type NewsfeedCache = { data?: { posts?: NewsfeedPost[] } };
+type NewsfeedPage = { data?: { posts?: NewsfeedPost[] } };
+type NewsfeedCache = InfiniteData<NewsfeedPage>;
 type Backup = [readonly unknown[], NewsfeedCache | undefined][];
 
 function usePostAction() {
@@ -46,20 +53,23 @@ function usePostAction() {
     queryClient.setQueriesData<NewsfeedCache>(
       { queryKey: NEWSFEED_KEY },
       (old) => {
-        if (!old?.data?.posts) return old;
-
+        if (!old?.pages) return old;
         return {
           ...old,
-          data: {
-            ...old.data,
-            posts: old.data.posts.map((post) =>
-              post._id === postId ? { ...post, ...getChanges(post) } : post,
-            ),
-          },
+          pages: old.pages.map((page) => ({
+            ...page,
+            data: {
+              ...page.data,
+              posts: page.data?.posts?.map((post) =>
+                post._id === postId ? { ...post, ...getChanges(post) } : post,
+              ),
+            },
+          })),
         };
       },
     );
   };
+
   const likeMutation = useMutation({
     mutationKey: POST_ACTION_KEY,
     mutationFn: ({ postId, isLiked }: { postId: string; isLiked: boolean }) => {
@@ -78,7 +88,7 @@ function usePostAction() {
       console.dir(_error);
       restoreNewsfeed(backup);
     },
-    onSettled: syncWithServer,
+    // onSettled: syncWithServer,
   });
 
   const saveMutation = useMutation({
@@ -101,10 +111,18 @@ function usePostAction() {
     onSettled: syncWithServer,
   });
 
-  const { data, isPending, isError } = useQuery({
-    queryKey: ['newsfeed'],
-    queryFn: async () => getNewsfeed('10', '0'),
-  });
+  const { data, isPending, isError, hasNextPage, fetchNextPage } =
+    useInfiniteQuery({
+      queryKey: NEWSFEED_KEY,
+      queryFn: ({ pageParam }) =>
+        getNewsfeed(String(NEWSFEED_LIMIT), String(pageParam)),
+      initialPageParam: 0,
+      getNextPageParam: (lastPage, _allPages, lastPageParam) => {
+        return lastPage?.data?.hasMore
+          ? lastPageParam + NEWSFEED_LIMIT
+          : undefined;
+      },
+    });
 
   function toPostCardView(post: NewsfeedPost): PostCardProps {
     return {
@@ -128,10 +146,12 @@ function usePostAction() {
       likeMutation.mutate({ postId, isLiked }),
     toggleSave: (postId: string, isSaved: boolean) =>
       saveMutation.mutate({ postId, isSaved }),
-    posts: data?.data?.posts ?? [],
+    posts: data?.pages.flatMap((page) => page.data.posts) ?? [],
     toPostCardView,
     isNewsfeedPending: isPending,
     isNewsfeedError: isError,
+    fetchNextPageNewsfeed: fetchNextPage,
+    hasNextPageNewsfeed: hasNextPage,
   };
 }
 

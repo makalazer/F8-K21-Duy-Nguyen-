@@ -73,3 +73,5 @@ export const sidebarButton = [
   //     },
   // },
 ];
+
+export const NEWSFEED_LIMIT = 3;
